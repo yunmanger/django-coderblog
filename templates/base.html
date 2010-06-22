@@ -16,7 +16,7 @@
 <!--<SCRIPT type="text/javascript" src="jquery.js"></SCRIPT>-->
 
 <STYLE type="text/css" media="screen">
-@import url('/media/styles/soulvision/style.css');
+@import url('/media/static_media/styles/soulvision/style.css');
 </STYLE>
 </HEAD><BODY>
 
@@ -33,10 +33,7 @@
           <UL>
             <UL>
               <LI><A href="/">Зеро</A></LI>
-              <LI>
-                </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О мелемен</A></LI>
-                </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О маклюбе</A></LI>
-              
+              <!-- </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О мелемен</A></LI> -->
             </UL>
           </UL>
         </DIV>
@@ -92,7 +89,7 @@
         	{% endfor %}
         </UL>
         <BR>
-        <H2>Категории</H2>
+        <H2>Разделы</H2>
         <UL>
         {% for cat in category_list %}
           	<LI class="cat-item cat-item-{{cat.pk}}"><A href="{{ cat.link }}" title="View all posts filed under {{ cat.title }}">{{ cat.title }}</A></LI>
@@ -114,6 +111,8 @@
         <H2>Ссылки</H2>
         <UL>
             <LI><A href="http://algoprog.kz/">algoprog.kz</A></LI>
+            <LI><A href="http://olympiads.kz/">olympiads.kz</A></LI>
+            <LI><A href="http://arti.kz/">arti.kz</A></LI>
         </UL>
         <BR>
         <H2>Имел дело с</H2>

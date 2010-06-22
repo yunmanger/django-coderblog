@@ -1,5 +1,4 @@
 # Django settings for code_project project.
-
 import sys, os
 
 def rel(*x):
@@ -7,9 +6,6 @@ def rel(*x):
 
 DISTR_DIR='/home/german/distr'
 LIB_DIR='/home/german/work/libs'
-sys.path.append(os.path.join(DISTR_DIR,"django-trunk"))
-sys.path.append(LIB_DIR)
-sys.path.append(rel('apps'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -113,5 +109,17 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.admin',
+    'django_evolution',
+    'django_extensions',
+    'django-backup',
     'blog',
 )
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
+
+sys.path.append(os.path.join(DISTR_DIR,"django-trunk"))
+sys.path.append(LIB_DIR)
+sys.path.append(rel('apps'))

@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+	{% for object in object_list %}
+	{% include "blog/post-item.html" %}
+	{% endfor %}
+{% endblock %}

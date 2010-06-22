@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD profile="http://gmpg.org/xfn/11"><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<META name="distribution" content="global">
+<META name="robots" content="follow, all">
+<META name="language" content="en, sv">
+<TITLE>{% block title %}my blog{% endblock %}</TITLE>
+<META name="generator" content="WordPress 1960">
+<!-- leave this for stats please -->
+<LINK rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<LINK rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/">
+<LINK rel="alternate" type="text/xml" title="RSS .92" href="/feed/rss/">
+<LINK rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/feed/atom/">
+<META name="robots" content="noindex,nofollow">
+<!--<SCRIPT type="text/javascript" src="jquery.js"></SCRIPT>-->
+
+<STYLE type="text/css" media="screen">
+@import url('/media/styles/soulvision/style.css');
+</STYLE>
+</HEAD><BODY>
+
+<DIV id="headerwrap">
+  <DIV id="headerbg">
+    <DIV id="header">
+      <H1><A href="/">
+        {% block head_title %}Блог <a href="http://sdu.edu.kz/">СДУ</a>шника{% endblock %}</A></H1>
+      <P class="tagline">
+        {% block slogan %}Герман Ильин{% endblock %}     </P>
+      <DIV class="Menu">
+        
+        <DIV class="Menuright">
+          <UL>
+            <UL>
+              <LI><A href="/">Зеро</A></LI>
+              <LI>
+                </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О мелемен</A></LI>
+                </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О маклюбе</A></LI>
+              
+            </UL>
+          </UL>
+        </DIV>
+      </DIV>
+      <DIV id="rssfeeds">
+        <P><A href="/feed/">фид</A></P>
+      </DIV>
+      <DIV class="search">
+        <FORM id="searchform" method="get" action="/search/">
+          <INPUT type="text" value="To search, type and hit enter" name="s" id="s" onfocus="if (this.value == &#39;To search, type and hit enter&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;To search, type and hit enter&#39;;}">
+        </FORM>
+      </DIV>
+    </DIV>
+  </DIV>
+</DIV>
+<DIV id="wrap">
+
+
+<DIV id="content">
+  <DIV class="postwrap">
+{% block content %}
+    {% for object in object_list %}
+    {% include "blog/post-item.html" %}
+    {% endfor %}
+{% endblock %}
+<DIV class="Nav">
+          </DIV>
+  </DIV>
+
+  <DIV id="sidebar">
+  <DIV id="sidebar-top">
+    <UL id="top-sidebarwidgets">
+            <H2>Про этот блог</H2>
+      <DIV class="sidebar-top-box">
+        
+        <DIV class="box-padding">
+          <P>Это мой первый блог. И здесь я буду писать всякую всячину. О том чем занимаюсь, над чем работаю,
+          где бываю, над чем размышляю, чем увлекаюсь ну и всякое такое.</P>
+          <DIV style="clear:both;"></DIV>
+        </DIV>
+      </DIV>
+          </UL>
+  </DIV>
+  <DIV style="clear:both;"></DIV>
+
+  <DIV id="sidebar-left">
+    <UL id="l_sidebarwidgets">
+        <DIV class="Categ">
+        <H2>Недавние посты</H2>
+        <UL>
+        	{% for post in recent_posts %}
+        	<LI><A href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</A></LI>
+        	{% endfor %}
+        </UL>
+        <BR>
+        <H2>Категории</H2>
+        <UL>
+        {% for cat in category_list %}
+          	<LI class="cat-item cat-item-{{cat.pk}}"><A href="{{ cat.link }}" title="View all posts filed under {{ cat.title }}">{{ cat.title }}</A></LI>
+		{% endfor %}
+        </UL>
+        <BR>
+<!-- 
+        <H2>Архив</H2>
+        <UL>
+          	<LI><A href="http://wordpressthemesbase.com/wp/2009/03/" title="March 2009">March 2009</A></LI>
+        	<LI><A href="http://wordpressthemesbase.com/wp/2009/02/" title="February 2009">February 2009</A></LI>
+        </UL>
+         -->
+      </DIV>
+    </UL>
+  </DIV>
+  <DIV id="sidebar-right">
+    <UL id="r_sidebarwidgets">
+        <H2>Ссылки</H2>
+        <UL>
+            <LI><A href="http://algoprog.kz/">algoprog.kz</A></LI>
+        </UL>
+        <BR>
+        <H2>Имел дело с</H2>
+        <UL>
+            <LI><A href="http://vaadin.com/">Vaadin RIA Framework</A></LI>
+            <LI><A href="http://vaadin.com/">JBoss AS</A></LI>
+            <LI><A href="http://vaadin.com/">EJB3</A></LI>
+            <LI><A href="http://vaadin.com/">JPA</A></LI>
+            <LI><A href="http://vaadin.com/">JSP/Servlets</A></LI>
+            <LI><A href="http://djangoproject.com/">Django Web Framework</A></LI>
+            <LI><A href="http://joomla.org/">PyQt</A></LI>
+            <LI><A href="http://joomla.org/">Qt</A></LI>
+            <LI><A href="http://joomla.org/">Joomla CMS</A></LI>
+            <LI><A href="http://joomla.org/">python</A></LI>
+            <LI><A href="http://joomla.org/">fortran</A></LI>
+            <LI><A href="http://joomla.org/">tasm</A></LI>
+            <LI><A href="http://joomla.org/">Java ME</A></LI>
+            <LI><A href="http://joomla.org/">Java SE</A></LI>
+            <LI><A href="http://joomla.org/">gnu c++</A></LI>
+            <LI><A href="http://joomla.org/">jQuery</A></LI>
+            <LI><A href="http://joomla.org/">javascript</A></LI>
+            <LI><A href="http://joomla.org/">delphi</A></LI>
+            <LI><A href="http://joomla.org/">php</A></LI>
+            <LI><A href="http://joomla.org/">pascal</A></LI>
+        </UL>
+        <BR>
+ </UL>
+  </DIV>
+</DIV>
+
+</DIV>
+<!-- begin footer -->
+
+<DIV id="footer">  © 2010 <A href="">Soul vision theme</A>. 
+  <DIV></DIV></DIV></DIV></BODY></HTML>

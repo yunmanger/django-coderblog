@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^', include('blog.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^images/', include('photologue.urls')),
 )
 
 if settings.DEBUG:

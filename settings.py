@@ -109,10 +109,10 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.admin',
-#    'django_evolution',
 #    'django_extensions',
 #    'django-backup',
     'blog',
+    'photologue',
 )
 
 try:

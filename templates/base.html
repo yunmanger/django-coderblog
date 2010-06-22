@@ -13,8 +13,10 @@
 <LINK rel="alternate" type="text/xml" title="RSS .92" href="/feed/rss/">
 <LINK rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/feed/atom/">
 <META name="robots" content="noindex,nofollow">
-<!--<SCRIPT type="text/javascript" src="jquery.js"></SCRIPT>-->
-
+<SCRIPT type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.3.2.min.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="{{MEDIA_URL}}js/ajax_imaging/jquery.tools.min.js"></SCRIPT>
+{% block jsblock %}
+{% endblock %}
 <STYLE type="text/css" media="screen">
 @import url('/media/static_media/styles/soulvision/style.css');
 </STYLE>
@@ -110,6 +112,7 @@
         <H2>Ссылки</H2>
         <UL>
             <LI><A href="http://algoprog.kz/">algoprog.kz</A></LI>
+            <LI><A href="http://olympiads.kz/">techblog.kz</A></LI>
             <LI><A href="http://olympiads.kz/">olympiads.kz</A></LI>
             <LI><A href="http://arti.kz/">arti.kz</A></LI>
         </UL>

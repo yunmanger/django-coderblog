@@ -111,10 +111,9 @@
     <UL id="r_sidebarwidgets">
         <H2>Ссылки</H2>
         <UL>
-            <LI><A href="http://algoprog.kz/">algoprog.kz</A></LI>
-            <LI><A href="http://olympiads.kz/">techblog.kz</A></LI>
-            <LI><A href="http://olympiads.kz/">olympiads.kz</A></LI>
-            <LI><A href="http://arti.kz/">arti.kz</A></LI>
+        	{% for link in public_links %}
+            <LI><A href="{{ link.url }}">{{ link.title }}</A></LI>
+            {% endfor %}
         </UL>
         <BR>
         <H2>Имел дело с</H2>

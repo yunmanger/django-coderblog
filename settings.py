@@ -83,6 +83,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "django.contrib.messages.context_processors.messages",
 "blog.context_processors.recent_posts",
 "blog.context_processors.category_list",
+"common.context_processors.public_links",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,6 +114,7 @@ INSTALLED_APPS = (
 #    'django-backup',
     'blog',
     'photologue',
+    'common',
 )
 
 try:

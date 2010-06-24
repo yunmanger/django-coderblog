@@ -15,6 +15,7 @@ body {
 	background: #000000 url(images/texture.jpg) repeat left top;
 	
 }
+code{overflow: auto;}
 a:link, a:visited, a:active {
 	text-decoration:none;
 	color:#660000;

@@ -84,6 +84,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "blog.context_processors.recent_posts",
 "blog.context_processors.category_list",
 "common.context_processors.public_links",
+"common.context_processors.markdown_config",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,6 +114,7 @@ INSTALLED_APPS = (
 #    'django_extensions',
 #    'django-backup',
     'blog',
+    'basic.inlines',
     'photologue',
     'common',
 )

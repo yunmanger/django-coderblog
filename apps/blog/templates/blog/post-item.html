@@ -1,4 +1,4 @@
-{% load markup %}
+{% load markup inlines %}
 <DIV class="post" id="post-{{post.pk}}" style="padding-bottom: 40px;">
   <DIV class="posthead">
 
@@ -12,7 +12,7 @@
 
   </DIV>
   <DIV class="postcontent">
-    {{ object.text|markdown }}
+    {{ object.text|render_inlines|markdown:mrk_conf }}
   </DIV>
   <DIV class="postinfo">
     <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} Comments</A></LI>

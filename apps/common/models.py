@@ -9,4 +9,4 @@ class Link(models.Model):
     order       = models.IntegerField(default=0)
     
     def __unicode__(self):
-        return u'{0}'.format(self.title)
+        return u'%s' % self.title

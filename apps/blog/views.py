@@ -4,6 +4,8 @@ from django.template import RequestContext
 from django.conf import settings
 from django.views.generic import date_based, list_detail
 
+import traceback
+
 from blog.models import Post, Category
 
 def post_list(request, page=0, paginate_by=20, **kwargs):
@@ -56,6 +58,7 @@ def post_on_yvi(request, slug, year, month, day, **kwargs):
         post.post_on_yvi()
         success = True
     except:
+        traceback.print_exc()
         success = False 
     c = RequestContext(request, {'post' : post, 'success' : success})
     return render_to_response("blog/post_on_yvi_success.html", c)

@@ -16,5 +16,5 @@ def post_to_yvi(post):
     for tag in soup.findAll('a'):
         tag.attrs = [check(attr, val) for attr, val in tag.attrs]
     string = soup.renderContents() 
-    do_post(u'%s' % post.title, u'%s' % string ,settings.YVI_LOGIN, settings.YVI_PASSWORD, settings.YVI_USER_ID)
+    do_post((post.title).encode('utf-8'), string.encode('utf-8') ,settings.YVI_LOGIN, settings.YVI_PASSWORD, settings.YVI_USER_ID)
     

@@ -11,9 +11,10 @@ class Category(models.Model):
 class Post(models.Model):
     user        = models.ForeignKey(User)
     title       = models.CharField(max_length=100)
+    slug        = models.SlugField(max_length=120)
     category    = models.ForeignKey(Category)
     text        = models.TextField()
-    markup      = models.CharField(editable=False, default='htm', max_length=3)
+    markup      = models.CharField(editable=False, default='mrk', max_length=3)
     pub_date    = models.DateTimeField()
     mod_date    = models.DateTimeField()
     

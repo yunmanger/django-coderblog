@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+ <h1>Разделы блога</h1>
+  <ul class="link_list">
+    {% for category in object_list %}
+    <li><a href="{{ category.link }}" title="Посмотреть посты в этой категории">{{ category }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

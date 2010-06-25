@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+	{% for object in object_list %}
+	{% include "blog/post-item.html" %}
+	{% endfor %}
+	
+  {% if is_paginated %}
+  <p class="pagination">
+    {% if has_next %}
+    <a class="older" href="?page={{ next }}" title="Старее">туда &rarr;</a>
+    {% endif %}
+    {% if has_next and has_previous %} | {% endif %}
+    {% if has_previous %}
+    <a class="newer" href="?page={{ previous }}" title="Новее">&larr; сюда</a>
+    {% endif %}
+  </p>
+  {% endif %}	
+{% endblock %}

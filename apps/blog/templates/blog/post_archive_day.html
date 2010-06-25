@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+<h1>Архив за {{ day|date:"d F Y" }}</h1>
+	{% for object in object_list %}
+	{% include "blog/post-item.html" %}
+	{% endfor %}
+{% endblock %}

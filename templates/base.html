@@ -96,13 +96,14 @@
 		{% endfor %}
         </UL>
         <BR>
-<!-- 
-        <H2>Архив</H2>
+        {% load blog_tags %}
+        {% get_post_archive as dates %}
+        <H{{ date|date }}2>Архив</H2>
         <UL>
-          	<LI><A href="http://wordpressthemesbase.com/wp/2009/03/" title="March 2009">March 2009</A></LI>
-        	<LI><A href="http://wordpressthemesbase.com/wp/2009/02/" title="February 2009">February 2009</A></LI>
+        	{% for date in dates %}
+          	<LI><A href="{% url blog_archive_month year=date.year month=date|date:"m" %}" title="{{ date|date:"b Y" }}">{{ date|date:"b Y" }}</A></LI>
+          	{% endfor %}
         </UL>
-         -->
       </DIV>
     </UL>
   </DIV>

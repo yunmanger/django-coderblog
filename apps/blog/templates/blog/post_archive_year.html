@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+<h1>Архив за {{ year }} год.</h1>  
+  <ul class="link_list">
+    {% for month in date_list %}
+    <li><a href="{% url blog_index %}{{ year }}/{{ month|date:"m" }}/" title="Посмотреть посты за этот месяц">{{ month|date:"F" }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

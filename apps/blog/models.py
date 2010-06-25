@@ -1,12 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 class Category(models.Model):
     title       = models.CharField(max_length=25)
     slug        = models.SlugField(max_length=35, unique=True)
+
+    @models.permalink
+    def link(self):
+        return ('blog_category_detail',(),{'slug': self.slug})
     
     def __unicode__(self):
         return u'%s' % self.title
+    
+class PublicManager(models.Manager):
+    
+    def published(self):
+        now = datetime.datetime.now()
+        return self.get_query_set().filter(pub_date__lte=now)
 
 class Post(models.Model):
     user        = models.ForeignKey(User)
@@ -17,6 +28,12 @@ class Post(models.Model):
     markup      = models.CharField(editable=False, default='mrk', max_length=3)
     pub_date    = models.DateTimeField()
     mod_date    = models.DateTimeField()
+    objects     = PublicManager()
+    
+    @models.permalink
+    def link(self):
+        d = self.pub_date
+        return ('blog_detail',(),{'year':d.year,'month': d.strftime("%m"),'day':d.strftime("%d"),'slug': self.slug})
     
     def __unicode__(self):
         return u'%s' % self.title

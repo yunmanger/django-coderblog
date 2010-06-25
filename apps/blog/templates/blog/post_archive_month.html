@@ -1,6 +1,8 @@
 {% extends "blog/base.html" %}
 
+
 {% block content %}
+<h1>Архив за {{ month|date:"F Y" }}</h1>
 	{% for object in object_list %}
 	{% include "blog/post-item.html" %}
 	{% endfor %}

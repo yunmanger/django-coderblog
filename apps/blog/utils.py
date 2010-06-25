@@ -2,7 +2,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from BeautifulSoup import BeautifulSoup, Comment
 
-from django_yvi import post
+from django_yvi import post as do_post
 
 def check(name, value):
     if name.upper() == 'HREF' and not value.upper().startswith('HTTP'):
@@ -16,5 +16,5 @@ def post_to_yvi(post):
     for tag in soup.findAll('a'):
         tag.attrs = [check(attr, val) for attr, val in tag.attrs]
     string = soup.renderContents() 
-    post(post.title, string ,settings.YVI_LOGIN, settings.YVI_PASSWORD, settings.YVI_USER_ID)
+    do_post(post.title, string ,settings.YVI_LOGIN, settings.YVI_PASSWORD, settings.YVI_USER_ID)
     

@@ -6,6 +6,10 @@ urlpatterns = patterns('blog.views',
         view='post_detail',
         name='blog_detail'
     ),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>[-\w]+)/yvi/$',
+        view='post_on_yvi',
+        name='blog_post_on_yvi'
+    ),
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$',
         view='post_archive',
         name='blog_archive_day'

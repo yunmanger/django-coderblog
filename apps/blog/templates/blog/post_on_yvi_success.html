@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+{% if success %}
+<h1>Кроспост на <img width="64" src="/media/static_media/yvision_logo.jpg"/> завершился удачно!</h1>
+{% else %}
+<h1>Кроспост на <img width="64" src="/media/static_media/yvision_logo.jpg"/> завершился неудачно :'(</h1>
+{% endif %}
+<br>
+<a href="{{ post.link }}" class="older">&larr; Назад</a>
+{% endblock %}

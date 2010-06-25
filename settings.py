@@ -51,6 +51,12 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
+DOMAIN = 'http://buben.kz'
+YVI_ENABLED = False
+YVI_LOGIN = ""
+YVI_PASSWORD = ""
+YVI_USER_ID = None
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/german/work/media/code_project/'
@@ -114,6 +120,7 @@ INSTALLED_APPS = (
     'django-backup',
     'south',
     'blog',
+    'files',
     'basic.inlines',
     'photologue',
     'common',

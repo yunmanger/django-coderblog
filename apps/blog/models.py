@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 import datetime
+
+from blog.utils import post_to_yvi
 
 class Category(models.Model):
     title       = models.CharField(max_length=25)
@@ -34,6 +37,10 @@ class Post(models.Model):
     def link(self):
         d = self.pub_date
         return ('blog_detail',(),{'year':d.year,'month': d.strftime("%m"),'day':d.strftime("%d"),'slug': self.slug})
+    
+    def post_on_yvi(self):
+        if settings.YVI_ENABLED:
+            post_to_yvi(self)
     
     def __unicode__(self):
         return u'%s' % self.title

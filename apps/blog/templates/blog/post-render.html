@@ -1,0 +1,2 @@
+    {% load markup inlines %}
+    {{ object.text|render_inlines|markdown:"safe,extra,wikilinks(base_url=/wiki/)"}}

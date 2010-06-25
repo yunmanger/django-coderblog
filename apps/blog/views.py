@@ -50,6 +50,16 @@ def post_archive(request, year, month=None, day=None, **kwargs):
             **kwargs
         )
 
+def post_on_yvi(request, slug, year, month, day, **kwargs):
+    post = Post.objects.get(slug=slug, pub_date__year=year, pub_date__month=int(month), pub_date__day=day)
+    try:    
+        post.post_on_yvi()
+        success = True
+    except:
+        success = False 
+    c = RequestContext(request, {'post' : post, 'success' : success})
+    return render_to_response("blog/post_on_yvi_success.html", c)
+    
 def post_detail(request, slug, year, month, day, **kwargs):
     """
     Displays post detail. If user is superuser, view will display 

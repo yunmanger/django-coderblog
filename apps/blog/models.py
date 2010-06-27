@@ -33,6 +33,9 @@ class Post(models.Model):
     mod_date    = models.DateTimeField()
     objects     = PublicManager()
     
+    class Meta:
+        ordering = ['-pub_date']
+    
     @models.permalink
     def link(self):
         d = self.pub_date

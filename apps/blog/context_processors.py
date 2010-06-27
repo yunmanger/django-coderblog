@@ -1,7 +1,7 @@
 from blog.models import Post, Category
 
 def recent_posts(request):
-    list = Post.objects.all().order_by("-pub_date")[:10]
+    list = Post.objects.published().order_by("-pub_date")[:10]
     return {'recent_posts': list}
 
 def category_list(request):

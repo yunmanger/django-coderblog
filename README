@@ -1,0 +1,23 @@
+Coder blog
+==========
+This is a simple blog for programmers, where they can publish
+posts devoted to some project. And every project will have it's
+own page.
+
+
+TODOs
+-----
+ + drafts
+ + project
+
+
+DEPENDENCIES
+------------
+ + basic.inlines
+ + BeautifulSoup
+ + photologue
+ + PIL
+ + south
+ + django-backup
+ + markdown
+ + ClientCookie, ClientForm if yVision crosspost is enabled (for kazakhstan users)

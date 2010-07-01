@@ -5,7 +5,7 @@ from BeautifulSoup import BeautifulSoup, Comment
 from django_yvi import post as do_post
 
 def check(name, value):
-    if (name.upper() == 'HREF' or name.upper() == 'SRC') and not value.upper().startswith('HTTP'):
+    if (name.upper() in ['HREF', 'SRC']) and not value.upper().startswith('HTTP'):
         value = "%s%s" % (settings.DOMAIN, value)
         return name, value
     return name, value

@@ -7,7 +7,7 @@ from django.contrib.sitemaps import ping_google
 def ping(request):
     if request.user.is_superuser:
         try:
-#            ping_google()
+            ping_google()
             msg = "Ping is OK"
         except:
             msg = "Error pinging google."

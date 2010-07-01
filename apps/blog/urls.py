@@ -47,3 +47,10 @@ urlpatterns = patterns('blog.views',
         name='blog_index'
     ),
 )
+
+from blog.feeds import BlogPostsFeed, BlogPostsByCategory
+
+urlpatterns += patterns('',
+    url(r'^feed/$', view=BlogPostsFeed(), name="blog_index_feed"),
+    url(r'^feed/(?P<slug>[-\w]+)/$', view=BlogPostsByCategory(), name="blog_category_feed"),
+)

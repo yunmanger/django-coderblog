@@ -12,6 +12,9 @@ class Category(models.Model):
     @models.permalink
     def link(self):
         return ('blog_category_detail',(),{'slug': self.slug})
+
+    def get_absolute_url(self):
+        return self.link()
     
     def __unicode__(self):
         return u'%s' % self.title
@@ -40,6 +43,9 @@ class Post(models.Model):
     def link(self):
         d = self.pub_date
         return ('blog_detail',(),{'year':d.year,'month': d.strftime("%m"),'day':d.strftime("%d"),'slug': self.slug})
+    
+    def get_absolute_url(self):
+        return self.link()
     
     def post_on_yvi(self):
         if settings.YVI_ENABLED:

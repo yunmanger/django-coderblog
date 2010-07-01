@@ -117,6 +117,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.flatpages',
     'django.contrib.admin',
+    'django.contrib.sitemaps',
     'django-backup',
     'south',
     'blog',

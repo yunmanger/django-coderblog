@@ -1,5 +1,12 @@
 {% extends "blog/base.html" %}
 
+{% block rss %}
+{{ block.super }}
+<LINK rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed/{{ category.slug }}/">
+{% endblock %}
+{% block feed_url %}/feed/{{ category.slug }}/{% endblock %}
+
+
 {% block content %}
 <h1>Раздел {{ category.title }}</h1>
 	{% for object in object_list %}

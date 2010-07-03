@@ -4,6 +4,9 @@ import sys, os
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
+def rel_to(to, *x):
+    return os.path.join(to, *x)
+
 DISTR_DIR='/home/german/distr'
 LIB_DIR='/home/german/work/libs'
 
@@ -108,6 +111,8 @@ TEMPLATE_DIRS = (
     rel('templates'),
 )
 
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,6 +130,7 @@ INSTALLED_APPS = (
     'basic.inlines',
     'photologue',
     'common',
+    'haystack',
 )
 
 try:
@@ -135,3 +141,8 @@ except ImportError:
 sys.path.append(os.path.join(DISTR_DIR,"django-trunk"))
 sys.path.append(LIB_DIR)
 sys.path.append(rel('apps'))
+
+#search
+HAYSTACK_SITECONF = 'code_project.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = rel_to(MEDIA_ROOT,"whoosh","codeproject")

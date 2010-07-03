@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Поиск{%endblock%}
+
+{% block jsblock %}
+{{ block.super }}
+<style>
+form#search input[type=text]{
+	width: 400px;
+	font-size: 20px;
+	font-family: arial;
+	padding: 0 2px 0 3px;
+}
+form#search li {
+list-style: none;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Поиск</h1>    
+
+    <form id="search" method="get" action=".">
+        <table>
+            {{ form.as_table }}
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="{{_("Search")}}">
+                </td>
+            </tr>
+        </table>
+    </form>
+    	<h2>Результат поиска</h2>
+		<div class="search_results">
+        {% if page.object_list %}
+            {% for result in page.object_list %}
+                {{forloop.counter}}.
+                <a href="{{result.object.get_absolute_url}}"><span>{{result.object}}</span></a><br>
+            {% endfor %}
+        {% else %}
+            <p>Результатов нет.</p>
+        {% endif %}
+        </div>
+        
+	{% include "blog/pagination.html" %}
+    
+{% endblock %}

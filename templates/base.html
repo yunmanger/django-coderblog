@@ -46,7 +46,7 @@
       </DIV>
       <DIV class="search">
         <FORM id="searchform" method="get" action="/search/">
-          <INPUT type="text" value="To search, type and hit enter" name="s" id="s" onfocus="if (this.value == &#39;To search, type and hit enter&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;To search, type and hit enter&#39;;}">
+          <INPUT type="text" value="ввести и нажать Enter для поиска" name="q" id="q" onfocus="if (this.value == &#39;ввести и нажать Enter для поиска&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;ввести и нажать Enter для поиска&#39;;}">
         </FORM>
       </DIV>
     </DIV>
@@ -101,7 +101,7 @@
         <BR>
         {% load blog_tags %}
         {% get_post_archive as dates %}
-        <H{{ date|date }}2>Архив</H2>
+        <H2>Архив</H2>
         <UL>
         	{% for date in dates %}
           	<LI><A href="{% url blog_archive_month year=date.year month=date|date:"m" %}" title="{{ date|date:"b Y" }}">{{ date|date:"b Y" }}</A></LI>

@@ -1,0 +1,6 @@
+<h1>{{ object.title }}</h1>
+опубликовал {{ object.user }}
+в разделе {{ object.category }}
+Дата: {{ object.pub_date }}
+
+{{ object.text }}

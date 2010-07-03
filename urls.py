@@ -24,7 +24,8 @@ urlpatterns = patterns('',
     (r'^', include('blog.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^images/', include('photologue.urls')),
-    (r'^ping/', 'common.views.ping'),
+    (r'^search/', include('haystack.urls')),
+    (r'^ping/', 'common.views.ping'),    
     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
 )
 

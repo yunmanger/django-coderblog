@@ -1,0 +1,11 @@
+{% extends "work/base.html" %}
+
+{% block content %}
+<h1>Проекты</h1>
+
+	{% for object in object_list %}
+	{% include "work/project-item.html" %}
+	{% endfor %}
+	
+	{% include "blog/pagination.html"%}
+{% endblock %}

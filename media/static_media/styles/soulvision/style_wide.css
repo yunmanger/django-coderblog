@@ -1,0 +1,805 @@
+/*  
+Theme Name: SoulVision
+Theme URI: 
+Description: Designed by JustDreamweaver.com using 
+Version: 1.0
+Author: JustDreamweaver
+Author URI: 
+*/
+
+body {
+	color:#FFF;
+	font:12px Verdana, Arial, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+	background: #000000 url(images/texture.jpg) repeat left top;
+	
+}
+code{overflow: auto;}
+a:link, a:visited, a:active {
+	text-decoration:none;
+	color:#660000;
+	border:0;
+	-moz-outline-style:none;
+}
+a:hover {
+	text-decoration:underline;
+	color:#990000;
+	border:0;
+	-moz-outline-style:none;
+}
+h1, h2, h3, h4 {
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+h2.pagetitle {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 15px;
+	margin-left: 0px;
+	font: normal 24px/28px Georgia, "Times New Roman", Times, serif;
+	color: #75230D;
+}
+img {
+	border:none;
+	margin:0;
+	padding:0;
+}
+img.alignleft {
+	margin-right:10px;
+	margin-bottom:5px;
+}
+img.alignright {
+	margin-bottom:5px;
+	margin-left:10px;
+}
+hr {
+	height:1px;
+	border-top: 1px dotted #8E6140;
+}
+blockquote {
+	margin:0 20px 10px 10px;
+	padding:10px 15px;
+	background: url(images/blockquote-bg.jpg) repeat-y left top;
+}
+/*-- This is an IE6 hack --*/
+* html blockquote {
+	height:1%;
+}
+blockquote blockquote {
+	margin-right:5px;
+	margin-left:0;
+	border-top: none;
+	border-bottom: none;
+	border-right-style: none;
+	border-left-style: none;
+}
+blockquote p {
+	margin:0;
+	padding:0 0 5px;
+}
+#wrap {
+	width:1000px;
+	position:relative;
+	margin:0 auto;
+	padding:0;
+}
+#sidebar a, #header a {
+	color:#DEDABF;
+}
+#headerwrap {
+	clear:left;
+	height:168px;
+	width:100%;
+	margin-right:auto;
+	margin-left:auto;
+	position:relative;
+	background-image: url(images/body-bg.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+#headerbg {
+	background: url(images/wide/header-bg.jpg) no-repeat left top;
+	margin-right: auto;
+	margin-left: auto;
+	width: 1000px;
+}
+
+#header {
+	clear:left;
+	height:168px;
+	width:1000px;
+	margin-right:auto;
+	margin-left:auto;
+	position:relative;
+}
+#header h1 {
+	font-size:34px;
+	position:absolute;
+	width:600px;
+	left:55px;
+	top:37px;
+	font-weight:400;
+	line-height:38px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	margin:0;
+	padding:0;
+}
+#header h1 a {
+	color: #FFFFFF;
+}
+
+#header h1 a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+p.tagline {
+	font-size:14px;
+	font-weight:700;
+	position:absolute;
+	width:575px;
+	top:95px;
+	left:55px;
+	color:#DEDABF;
+	margin:0;
+	padding:0;
+}
+#header .Menu/*-- Top navigation settings --*/
+ {
+	position:absolute;
+	float:right;
+	height:36px;
+	right:20px;
+	top:0;
+	width:960px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.Menuleft /*-- This div gives the left side of the menu a rounded corner --*/
+{
+	background-image:url(images/menu-left.gif);
+	background-repeat:no-repeat;
+	background-position:left top;
+	height:36px;
+}
+.Menuright /*-- This div gives the right side of the menu a rounded corner --*/
+{
+	background-image:url(images/menu-right.gif);
+	background-repeat:no-repeat;
+	background-position:right top;
+	height:36px;
+}
+.Menu ul {
+	background-repeat:no-repeat;
+	background-position:left top;
+	margin:0;
+	padding:0;
+}
+.Menu ul ul {
+	position:relative;
+	top:0;
+	right:15px;
+	float:right;
+	margin:0;
+	padding:0 0 0 15px;
+	background: url(images/menu-left.gif) no-repeat left top;
+}
+.Menu li {
+	display:inline;
+	line-height:36px;
+	margin:0;
+	padding:0;
+}
+#header  .Menu a:link, #header .Menu a:visited, #header .Menu a:active, #header .Menu a:focus {
+	display:inline;
+	margin:0;
+	padding:9px 5px 11px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #E9E4D0;
+	text-decoration: none;
+}
+#header  .Menu a:hover {
+	text-decoration:none;
+	color: #FFFFFF;
+	background: url(images/menu-hover.gif) no-repeat center top;
+}
+/*-- Header search settings --*/
+#header .search {
+	position:absolute;
+	top:136px;
+	width:190px;
+	right:130px;
+}
+#header .search form {
+	padding-right:0;
+	padding-left:0;
+	margin:0;
+}
+#header .search input {
+	border:1px solid #280702;
+	color:#C58556;
+	font-size:11px;
+	width:175px;
+	background-color:#280702;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:5px;
+}
+/*-- Header RSS settings --*/
+#rssfeeds {
+	position:absolute;
+	width:250px;
+	top:100px;
+	right:95px;
+	text-align:right;
+	padding-right:0px;
+	font: bold 14px Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+}
+#rssfeeds  p {
+	line-height:18px;
+	margin:0;
+	padding:0;
+}
+/*-- Begin page content CSS --*/
+#content {
+	width:1000px;
+	position:relative;
+	float:left;
+	background:url(images/wide/content-bg.jpg) repeat-y left;
+	color:#333;
+	padding:0;
+}
+.postwrap h1 {
+	margin:0;
+	padding:0px;
+	font: normal 24px/28px Georgia, "Times New Roman", Times, serif;
+}
+.postwrap {
+	float:left;
+	width:705px;
+	padding:10px 10px 10px 63px;
+}
+.postwrap p {
+	line-height: 18px;
+}
+.posthead {
+	background:url(images/dotline.gif) repeat-x left bottom;
+	padding-bottom:10px;
+	position:relative;
+	clear:left;
+	padding-top: 8px;
+}
+#content .posthead h1 a {
+	color:#000;
+}
+#content .posthead a:hover {
+	color: #A04611;
+	text-decoration: none;
+}
+
+.postauthor {
+	color:#660000;
+	padding-top:1px;
+	font-size:10px;
+	font-weight:700;
+	line-height:20px;
+}
+/*-- This styles the flyout date graphic --*/
+.postdate {
+	position:absolute;
+	top:0;
+	left:-63px;
+	text-align:center;
+	background:url(images/post-date.png) no-repeat left top;
+	width:44px;
+	margin:0;
+	padding:12px 8px 18px 6px;
+}
+.postdate small {
+	font-size:10px;
+	color:#000;
+	font-weight:700;
+}
+.postdate .month {
+	display:block;
+	text-transform:uppercase;
+	font-size:9px;
+	padding-bottom:0;
+	color: #703622;
+	line-height: 12px;
+}
+.postdate .day {
+	display:block;
+	color:#000;
+	font:bold 22px/18px Georgia, "Times New Roman", Times, serif;
+}
+.postdate .year {
+	display:block;
+}
+.postcontent {
+	padding-top:10px;
+	padding-bottom:10px;
+	line-height:17px;
+	font-size:12px;
+}
+.postcontent img {
+
+}
+.postinfo {
+	background: url(images/postinfo-bg.jpg) repeat-x left top;
+	padding: 8px;
+	border: 1px solid #CDB594;
+	height: 100%;
+}
+.postinfo li {
+	list-style-type:none;
+	display:inline;
+	color:#660000;
+	font-size:10px;
+	font-weight:700;
+	padding:0px 0 0px 18px;
+}
+.postcat {
+	background:url(images/icon-category.gif) no-repeat left top;
+	position: relative;
+	left: 10px;
+	width: 365px;
+	float: left;
+}
+.singlepostcat {
+	background:url(images/icon-category.gif) no-repeat left top;
+	position: relative;
+	left: 0px;
+	width: 465px;
+	float: left;
+}
+
+.postcomments {
+	background:url(images/icon-comment.gif) no-repeat left top;
+	display: block;
+	float: left;
+}
+.more-link {
+	font-size:11px;
+	font-weight:700;
+	background: url(images/read-more-icon.gif) no-repeat left center;
+	padding-left: 20px;
+	height: 16px;
+	width: 200px;
+	display: block;
+}
+/*-- Comment Settings --*/
+#commentblock {
+	width:500px;
+	float:left;
+	margin:10px 0;
+	padding:0;
+	border: 1px solid #CDB594;
+	background: url(images/postinfo-bg.jpg) repeat left;
+}
+.comment-wrap {
+	padding-right:13px;
+	padding-left:17px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#commentblock ol {
+	padding: 0px;
+	list-style: none;
+	margin: 10px 0px 20px;
+}
+#commentblock  ol li {
+	margin: 0px;
+	padding: 0px;
+}
+
+.commentdate {
+	font-size:12px;
+	padding-left:0;
+}
+#commentlist li p {
+	margin-bottom:8px;
+	line-height:20px;
+	padding:0;
+}
+.commentlist li.alt .commenttext {
+	clear: both;
+
+}
+#commentblock ol.commentlist li {
+
+}
+.commentname {
+	color:#333;
+	margin:0;
+	padding:5px 5px 5px 0;
+}
+.commentinfo {
+	clear:both;
+}
+.commenttext {
+	clear:both;
+	width:465px;
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #333333;
+	border-top: 1px dotted #9E9265;
+	padding-top: 10px;
+	margin-bottom: 15px;
+}
+.commenttext blockquote {
+	margin-bottom:10px;
+	margin-top: 8px;
+}
+.commenttext p {
+	margin:0;
+	padding:0 0 10px;
+}
+#commentform #submit {
+	color:#ECE7D3;
+    font-family:Georgia, ..., serif;
+	font-size:14px;
+	font-weight:700;
+	border:2px solid #381405;
+	display:block;
+	margin:0;
+	padding:4px;
+	background: url(images/submit-bg.jpg) repeat-x left center;
+}
+p.meta {
+	color: #9E9265;
+	font: 12px/34px Georgia, "Times New Roman", Times, serif;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+p.approval {
+	font-style: italic;
+	color: #990000;
+	clear: left;
+}
+p.commenttitle {
+	font: 18px Georgia, "Times New Roman", Times, serif;
+	color: #333333;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+/*-- Sidebar settings --*/
+#sidebar {
+	float:right;
+	width:170px;
+	color:#DEDABF;
+	margin-top:0px;
+	position:relative;
+	font-size:11px;
+}
+#sidebar a:hover {
+	color: #C58556;
+	text-decoration: none;
+}
+#sidebar h2 {
+	font-size:14px;
+	font-weight:bold;
+	border:1px solid #8E6140;
+	margin:0;
+	padding:3px 0 6px 8px;
+	background: url(images/h2-bg.jpg) repeat-x left top;
+}
+#sidebar ul li strong {
+	color:#FC0;
+}
+#sidebar-top {
+	width:390px;
+	padding:5px;
+}
+.sidebar-top-box {
+	margin-bottom:10px;
+	padding:0;
+	border-top: none;
+	border-right: 1px solid #8E6140;
+	border-bottom: 1px solid #8E6140;
+	border-left: 1px solid #8E6140;
+}
+.box-padding {
+	padding:7px;
+}
+.sidebar-top-box p {
+	margin-top:3px;
+	margin-bottom:3px;
+}
+#sidebar-top h2 {
+	margin-top:10px;
+	color:#CFA97E;
+}
+#sidebar-top .textwidget {
+	margin-bottom:10px;
+	padding:7px;
+	border-right: 1px solid #A1674F;
+	border-bottom: 1px solid #A1674F;
+	border-left: 1px solid #A1674F;
+}
+#sidebar-top ul ul {
+	list-style-type:none;
+	margin-bottom:10px;
+	padding:10px 7px 7px 12px;
+	border-right: 1px solid #8E6140;
+	border-bottom: 1px solid #8E6140;
+	border-left: 1px solid #8E6140;
+}
+#sidebar-top ul ul li {
+	padding-left:10px;
+	list-style-type:none;
+	background-image:url(images/lidot.gif);
+	background-repeat:no-repeat;
+	background-position:left top;
+	padding-bottom:3px;
+}
+#sidebar-top ul li a {
+	text-decoration:none;
+}
+
+#sidebar-top .box-ads a{
+    text-decoration:none;
+}
+#sidebar-left {
+	float:left;
+	width:215px;
+	padding:0 10px 0 5px;
+}
+#sidebar #sidebar-left h2, #sidebar #sidebar-right h2 {
+	margin:15px 0 10px;
+	color: #CFA97E;
+}
+#sidebar-right {
+	float:right;
+	width:153px;
+	padding:0 5px 0 10px;
+}
+#sidebar-left ul ul, #sidebar-right ul ul {
+	padding-left:5px;
+}
+html, #sidebar ul, #sidebar-wrap ul, .rel-posts ul {
+	margin:0;
+	padding:0;
+}
+#sidebar-right li, #sidebar-left li {
+	background:url(images/lidot.gif) no-repeat left top;
+	list-style:none;
+	margin:0;
+	padding:0 0 5px 8px;
+}
+#sidebar-left  .children, #sidebar-right  .children {
+	padding-top: 8px;
+}
+#sidebar-left  ul.children  li, #sidebar-right  ul.children  li {
+	padding-bottom: 3px;
+	padding-top: 0px;
+}
+#sidebar   h2  a.rsswidget {
+	color: #CFA97E;
+	text-decoration: none;
+}
+#sidebar .rsswidget img {
+	float: left;
+	margin-top: 2px;
+	margin-right: 7px;
+}
+/*-- Footer settings --*/
+#footer {
+	float:left;
+	width:950px;
+	position:relative;
+	background:url(images/wide/footer.jpg) no-repeat left top;
+	height:45px;
+	color:#A1674F;
+	font-size:11px;
+	padding:55px 0 0 50px;
+}
+#wrap #footer p {
+	margin:0 0 5px;
+	padding:0;
+}
+#footer a {
+	color:#A1674F;
+	text-decoration:underline;
+}
+
+/*-- Post RSS and Trackback settings --*/
+.Note li {
+	list-style-type:none;
+	font-size:11px;
+	margin:0;
+	padding:2px 0 2px 15px;
+}
+.NoteRss {
+	background:url(images/NoteRss.png) no-repeat left top;
+}
+.NoteTrackBack {
+	background:url(images/NoteTrackBack.gif) no-repeat left top;
+}
+/*-- Related Posts plugin settings --*/
+.rel-posts {
+	background-image:url(images/dotline.gif);
+	background-repeat:repeat-x;
+	background-position:left bottom;
+	margin:0 0 10px;
+	padding:0 0 10px;
+}
+.rel-posts li {
+	list-style-type:none;
+	font-size:11px;
+	background-image:url(images/read-more-icon.gif);
+	background-repeat:no-repeat;
+	background-position:left top;
+	margin:0;
+	padding:2px 0 2px 18px;
+}
+/*-- Wordpress calendar settings --*/
+#wp-calendar {
+	width:100%;
+	border-collapse:collapse;
+	margin:0;
+	padding:0;
+}
+#wp-calendar .pad {
+	background: url(images/texture.jpg) repeat;
+}
+#wp-calendar caption {
+	padding-top:3px;
+	padding-bottom:6px;
+	text-align:left;
+	font: 700 14px/25px Georgia, "Times New Roman", Times, serif;
+	color: #CFA97E;
+}
+#wp-calendar td {
+	text-align:center;
+	padding-top:2px;
+	padding-bottom:2px;
+	line-height:15px;
+}
+#wp-calendar th {
+	background: #000000 url(images/h2-bg.jpg) no-repeat top;
+}
+#wp-calendar tbody {
+	border-bottom-style: none;
+	border-top: 1px solid #4B2E0C;
+	border-right: 1px solid #4B2E0C;
+	border-left: 1px solid #4B2E0C;
+	border-bottom-color: #4B2E0C;
+}
+#wp-calendar tbody a {
+	font-weight:700;
+	color:#FFF;
+	text-decoration:none;
+	display:block;
+	border-style:none;
+	margin:0;
+	padding:0;
+	background: #000 url(images/h2-bg.jpg) no-repeat top;
+}
+#wp-calendar tbody a:hover {
+	font-weight:700;
+	color:#DFD8BC;
+	text-decoration:none;
+	border-style:none;
+	margin:0;
+	padding:0;
+}
+#wp-calendar tfoot, #wp-calendar tfoot .pad {
+	background: url(images/h2-bg.jpg) top;
+}
+#wp-calendar tfoot a:hover {
+	text-decoration:underline;
+}
+#wp-calendar tfoot a {
+	display:block;
+	padding:2px 0;
+}
+#wp-calendar tfoot td {
+	padding:0;
+}
+/*-- Other grouped selectors --*/
+form, .postinfo ul, .Note {
+	margin:0;
+	padding:0;
+}
+input, textarea, select {
+	font-family:'Verdana';
+	color:#282b31;
+	font-size:11px;
+}
+.Note li a {
+	color:#000;
+}
+.postinfo li a, #sidebar-top a, #sidebar a:hover {
+	text-decoration:underline;
+}
+
+#credit {
+	color: #666666;
+	margin-top: 8px;
+	padding-bottom: 8px;
+}
+#credit a {
+	color: #666666;
+}
+
+/* Styling for RSS feed widget */
+#rss a {
+	color: #D4CEAE;
+	line-height: 20px;
+}
+#rss a:hover {
+	color: #EF930C;
+	text-decoration: none;
+}
+.clearer {
+	clear: both;
+	float: none;
+}
+
+/* Styling for Avatars */
+.avatar {
+	float: left;
+	border: 1px solid #ACA288;
+	display: block;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+/* =PageNavi Custom CSS Styles
+-------------------------------------------------------------- */
+
+/* Use !important to override PageNavi CSS */
+
+
+.wp-pagenavi a, .wp-pagenavi a:link {
+	padding: 2px 5px 2px 5px !important;
+	margin-right: 2px !important;
+	border: 1px solid #2C2C2C !important;
+	text-decoration: none  !important;
+	color: #fff !important;
+	background: #2C2C2C url(images/image1.gif);!important;	
+}
+.wp-pagenavi a:visited {
+	padding: 2px 5px 2px 5px !important;
+	margin-right: 2px !important;
+	border: 1px solid #2C2C2C !important;
+	text-decoration: none !important;
+	color: #fff !important;
+	background: #2C2C2C url(images/image1.gif) !important;	
+}
+.wp-pagenavi a:hover {	
+	border:1px solid #BA5611 !important;
+	color: #FFF !important;
+	background: #BA5611 url(images/image2.gif) !important;
+}
+.wp-pagenavi a:active {
+	border:1px solid #BA5611 !important;
+	color: #FFF !important;
+	background: #BA5611 url(images/image2.gif) !important;	
+}
+.wp-pagenavi span.pages {
+	padding: none !important;
+	margin-right: 2px !important;
+	border: none !important;
+	text-decoration: none !important;
+	color: #A1674F !important;
+	background: transparent url(none) !important;
+	font: bold 14px Georgia, "Times New Roman", Times, serif;
+}
+.wp-pagenavi span.current {
+	padding: 2px 5px 2px 5px !important;
+	margin-right: 2px !important;
+	border: 1px solid #BA5611 !important;
+    font-weight: bold !important;
+	background: #BA5611 url(images/image2.gif) !important;
+	color: #FFF !important;
+}
+.wp-pagenavi span.extend {
+	padding: 2px 4px 2px 4px; 
+	margin: 2px;	
+	border: none !important;
+	color: #000000;
+	background:transparent !important;
+}

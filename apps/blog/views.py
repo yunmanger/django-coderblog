@@ -84,7 +84,7 @@ def post_detail(request, slug, year, month, day, **kwargs):
         queryset=posts,
         **kwargs
     )
-
+    
 
 def category_list(request, template_name = 'blog/category_list.html', **kwargs):
     """

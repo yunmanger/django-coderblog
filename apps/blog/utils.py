@@ -20,3 +20,29 @@ def post_to_yvi(post):
     string = soup.renderContents() 
     do_post(post.title, string ,settings.YVI_LOGIN, settings.YVI_PASSWORD, settings.YVI_USER_ID)
     
+def removecut(string):
+    soup = BeautifulSoup(string, selfClosingTags=['img','br'])
+    tag = soup.find('yvcut')
+    if not tag: return string
+    tag.extract()
+    string = soup.renderContents()
+    return string    
+
+def postcut(string, post=None):
+    soup = BeautifulSoup(string, selfClosingTags=['img','br'])
+    tag = soup.find('yvcut')
+    if not tag: return string
+    next = tag.findAllNext()
+    for t in next:
+        t.extract()
+
+    if post: url = post.get_absolute_url()
+    else: url = ''
+    val = tag.getText()
+    newtag = "<a id='yvcut' href='%s'>%s</a>" % (url, val)
+    tag.replaceWith(newtag)
+    string = soup.renderContents()
+    return string    
+     
+    
+    

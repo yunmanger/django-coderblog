@@ -1,5 +1,4 @@
 {% extends "blog/base.html" %}
-{% load markup inlines blog_tags %}
 
 {% block content %}
 <DIV class="post" id="post-{{post.pk}}" style="padding-bottom: 40px;">
@@ -15,7 +14,7 @@
 
   </DIV>
   <DIV class="postcontent">
-  {{ object.text|render_inlines|markdown:"extra,wikilinks(base_url=/wiki/)"|rmcut }}
+  {% include "blog/post-render.html" %}
   </DIV>
   {% if user.is_superuser %}
   <DIV STYLE="MARGIN:5PX;">

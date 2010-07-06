@@ -123,14 +123,18 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.admin',
     'django.contrib.sitemaps',
+
     'django-backup',
+    'tagging',
     'south',
-    'blog',
-    'files',
     'basic.inlines',
     'photologue',
-    'common',
     'haystack',
+
+    'blog',
+    'files',
+    'common',
+    'work',
 )
 
 try:

@@ -27,7 +27,8 @@ urlpatterns = patterns('',
     (r'^search/', include('haystack.urls')),
     (r'^p/', include('work.urls')),
     (r'^ping/', 'common.views.ping'),    
-    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
+    (r'^robots\.txt', 'robots.views.rules_list'),
+    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 )
 
 if settings.DEBUG:

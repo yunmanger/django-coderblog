@@ -81,6 +81,7 @@ SECRET_KEY = 'x7+2eb0f2zd_to48j11jrrk*j*bm_4k$%w%(%h0_1f-33mdrd*'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.app_directories.load_template_source'
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -111,6 +112,7 @@ TEMPLATE_DIRS = (
     rel('templates'),
 )
 
+#ROBOTS_SITEMAP_URLS = ['http://www.buben.kz/sitemap.xml']
 
 
 INSTALLED_APPS = (
@@ -130,6 +132,7 @@ INSTALLED_APPS = (
     'basic.inlines',
     'photologue',
     'haystack',
+    'robots',
 
     'blog',
     'files',

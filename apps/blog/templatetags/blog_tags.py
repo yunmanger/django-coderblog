@@ -46,7 +46,7 @@ truncatehtml.is_safe = True
 def yvcut(string, o):
     n = len(string)
     s = postcut(string, o)
-    if s == string:
+    if len(s) == len(string):
         return text.truncate_html_words(string, 256)
     else:
         return s

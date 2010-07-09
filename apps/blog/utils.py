@@ -11,7 +11,7 @@ def check(name, value):
     return name, value
         
 def post_to_yvi(post):
-    string = render_to_string("blog/post-render.html", {'object': post})
+    string = render_to_string("blog/post-render-yvi.html", {'object': post})
     soup = BeautifulSoup(string, selfClosingTags=['img']) 
     for tag in soup.findAll('a'):
         tag.attrs = [check(attr, val) for attr, val in tag.attrs]

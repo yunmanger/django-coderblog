@@ -1,0 +1,4 @@
+    {% load markup inlines blog_tags %}
+    {{ object.text|render_inlines|markdown:"extra,wikilinks(base_url=/wiki/)" }}
+    <br><br>
+    <a href="{{ object.link }}">Читать в оригинале</a>

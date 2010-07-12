@@ -60,8 +60,8 @@ YVI_LOGIN = ""
 YVI_PASSWORD = ""
 YVI_USER_ID = None
 
-TWITTER_USER = "yun_man_ger"
-TWITTER_PASSWORD = "verysimple"
+TWITTER_USER = ""
+TWITTER_PASSWORD = ""
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"

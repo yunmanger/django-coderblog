@@ -1,32 +1,46 @@
-{% extends "blog/base.html" %}
+{% extends "work/base.html" %}
+{% load common_tags %}
 
 {% block content %}
-<DIV class="post" id="post-{{post.pk}}" style="padding-bottom: 40px;">
-  <DIV class="posthead">
+<h2>TODOs</h2>
+<hr>
+{% if not todo_list %}
+Туду пока нет.
+{% else %}
+{% for todo in todo_list %}
+<div>
+<a href="{{ todo.link }}">{{ todo }}</a> - {{ todo.get_status_display }} - {{ todo.get_type_display }} - date: {{todo.pub_date|cdate}}
+</div>
+{% endfor %}
+{% endif %}
+<hr>
+<a href="">Посмотреть все туду</a>
 
-    <H1><A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
-    <SMALL class="postauthor">Posted by {{ object.user }} </SMALL>
+<h2>POSTs</h2>
+<hr>
+{% if not post_list %}
+Постов пока нет.
+{% else %}
+{% for post in post_list %}
+<div>
+{{ post }}
+</div>
+{% endfor %}
+{% endif %}
+<hr>
+<a href="">Посмотреть все посты по проекту</a>
 
-    <P class="postdate">
-    <SMALL class="month">{{ object.pub_date|date:"M" }}</SMALL>
-    <SMALL class="day">{{ object.pub_date|date:"d" }}</SMALL>
-    </P>
-
-  </DIV>
-  <DIV class="postcontent">
-  {% include "blog/post-render.html" %}
-  </DIV>
-  {% if user.is_superuser %}
-  <DIV STYLE="MARGIN:5PX;">
-  <A href="{{ object.link }}yvi/" onClick="if(confirm('Ты уверен?')){return true;}else{return false;}" title=""><img title="Запостить на yVision.kz" src="{{MEDIA_URL}}static_media/yvi.png" /></A>
-  </DIV>
-  {% endif %}
-  
-  <DIV class="postinfo" width=100%>
-    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} Comments</A></LI>
-    <LI class="postcat">Filed under: <A href="{{ object.category.link }}" title="View all posts in {{ object.category }}" rel="category tag">{{ object.category }}</A></LI>
-    <DIV class="clearer"></DIV>
-  </DIV>
-</DIV>
-<DIV class="clearer"></DIV>
+<h2>FILEs</h2>
+<hr>
+{% if not file_list %}
+Файлов пока нет.
+{% else %}
+{% for file in file_list %}
+<div>
+{{ file }}
+</div>
+{% endfor %}
+{% endif %}
+<hr>
+<a href="">Посмотреть все посты по проекту</a>
 {% endblock %}

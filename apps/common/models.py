@@ -10,3 +10,9 @@ class Link(models.Model):
     
     def __unicode__(self):
         return u'%s' % self.title
+
+class TwitterStatus(models.Model):
+    tid         = models.CharField(max_length=255)
+    text        = models.CharField(max_length=140)
+    pub_date    = models.DateTimeField(null=True, blank=True)
+    pickle_zip  = models.TextField()

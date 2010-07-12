@@ -13,6 +13,13 @@ TODO_CHOICES = (
     (4, "Fuzzy"),
 )
 
+TODO_STATUS = (
+    (1, "new"),
+    (2, "in process"),
+    (3, "done"),
+    (4, "fuzzy"),
+)
+
 class PublicManager(models.Manager):
     
     def published(self):
@@ -28,6 +35,13 @@ class Project(models.Model):
     is_public   = models.BooleanField(default=True)
     tags        = TagField()
     objects     = PublicManager()
+
+    @models.permalink
+    def link(self):
+        return ('project_detail',(),{'slug': self.slug })
+
+    def get_absolute_url(self):
+        return self.link()
     
     def __unicode__(self):
         return self.title
@@ -35,9 +49,11 @@ class Project(models.Model):
     
 class Todo(models.Model):
     user        = models.ForeignKey(User)
+    project     = models.ForeignKey(Project)
     title       = models.CharField(max_length=128)
     desc        = models.TextField()
     type        = models.IntegerField(choices=TODO_CHOICES)
+    status      = models.IntegerField(choices=TODO_STATUS, default=1)
     pub_date    = models.DateTimeField()
     deadline    = models.DateTimeField(null=True, blank=True)
     is_public   = models.BooleanField(default=True)

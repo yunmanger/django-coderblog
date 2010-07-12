@@ -60,6 +60,9 @@ YVI_LOGIN = ""
 YVI_PASSWORD = ""
 YVI_USER_ID = None
 
+TWITTER_USER = "yun_man_ger"
+TWITTER_PASSWORD = "verysimple"
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/german/work/media/code_project/'
@@ -95,6 +98,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "blog.context_processors.category_list",
 "common.context_processors.public_links",
 "common.context_processors.markdown_config",
+"common.context_processors.twitter_statuses",
 )
 
 MIDDLEWARE_CLASSES = (

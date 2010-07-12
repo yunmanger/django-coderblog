@@ -5,6 +5,7 @@
 <META name="robots" content="follow, all">
 <META name="language" content="ru, kz, en, tr">
 <TITLE>Блог СДУшника {% block title %}{% endblock %}</TITLE>
+{% load common_tags %}
 <!-- leave this for stats please -->
 <meta name="google-site-verification" content="sOzr_6LZTHZlt8Dwd418p9z5h7nEk12KiA4GFtUjhn0" />
 <LINK rel="shortcut icon" href="/media/static_media/styles/soulvision/images/favicon.ico" type="image/x-icon">
@@ -22,6 +23,18 @@
 <STYLE type="text/css" media="screen">
 @import url('/media/static_media/styles/soulvision/style.css');
 </STYLE>
+<style>
+	form.twitter-form input[type='text']{
+	    border:1px solid #280702;
+	    color:#C58556;
+	    font-size:10px;
+	    width:195px;
+	    background-color:#280702;
+	    padding-top:0px;
+	    padding-bottom:0px;
+	    padding-left:5px;
+   	}
+</style>
 </HEAD><BODY>
 
 <DIV id="headerwrap">
@@ -107,6 +120,24 @@
           	<LI><A href="{% url blog_archive_month year=date.year month=date|date:"m" %}" title="{{ date|date:"b Y" }}">{{ date|date:"b Y" }}</A></LI>
           	{% endfor %}
         </UL>
+		{% if twitter_statuses %}
+        <H2>Твиттер <a style="font-size:10px;" target="_blank" href="http://twitter.com/yun_man_ger"><em>follow</em></a></H2>
+        <UL>
+        	{% if user.is_superuser %}
+        	<div>
+        	<form class="twitter-form" method="post" action="/s/twitter/post/">
+        	{% csrf_token %}
+        	<input type="text" name="tweet" value="сказать" onfocus="if (this.value == &#39;сказать&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;сказать&#39;;}"/>
+        	<input type="hidden" name="next" value="/"/> 
+        	</form>
+        	<br>
+        	</div>
+        	{% endif %}
+        	{% for s in twitter_statuses %}
+          	<LI><div style="font-size:12px;">{{ s.text }}</div><div style="color:#CFA97E;" class="tdate">{{ s.pub_date|timesince }}</div></LI>
+          	{% endfor %}
+        </UL>
+        {% endif %}
       </DIV>
     </UL>
   </DIV>

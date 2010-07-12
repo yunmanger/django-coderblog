@@ -119,6 +119,18 @@
           	<LI><A href="{% url blog_archive_month year=date.year month=date|date:"m" %}" title="{{ date|date:"b Y" }}">{{ date|date:"b Y" }}</A></LI>
           	{% endfor %}
         </UL>
+      </DIV>
+    </UL>
+  </DIV>
+  <DIV id="sidebar-right">
+    <UL id="r_sidebarwidgets">
+        <H2>Ссылки</H2>
+        <UL>
+        	{% for link in public_links %}
+            <LI><A href="{{ link.url }}">{{ link.title }}</A></LI>
+            {% endfor %}
+        </UL>
+        <BR>
 		{% if twitter_statuses %}
         <H2>Твиттер <a style="font-size:10px;" target="_blank" href="http://twitter.com/yun_man_ger"><em>follow</em></a></H2>
         <UL>
@@ -137,18 +149,6 @@
           	{% endfor %}
         </UL>
         {% endif %}
-      </DIV>
-    </UL>
-  </DIV>
-  <DIV id="sidebar-right">
-    <UL id="r_sidebarwidgets">
-        <H2>Ссылки</H2>
-        <UL>
-        	{% for link in public_links %}
-            <LI><A href="{{ link.url }}">{{ link.title }}</A></LI>
-            {% endfor %}
-        </UL>
-        <BR>
         <H2>Имел дело с</H2>
         <UL>
             <LI><A href="http://vaadin.com/">Vaadin RIA Framework</A></LI>

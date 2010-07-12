@@ -111,6 +111,25 @@
 		{% endfor %}
         </UL>
         <BR>
+		{% if twitter_statuses %}
+        <H2>Твиттер <a style="font-size:10px;" target="_blank" href="http://twitter.com/yun_man_ger"><em>follow</em></a></H2>
+        <UL>
+        	{% if user.is_superuser %}
+        	<div>
+        	<form class="twitter-form" method="post" action="/s/twitter/post/">
+        	{% csrf_token %}
+        	<input type="text" name="tweet" value="сказать" onfocus="if (this.value == &#39;сказать&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;сказать&#39;;}"/>
+        	<input type="hidden" name="next" value="/"/> 
+        	</form>
+        	<br>
+        	</div>
+        	{% endif %}
+        	{% for s in twitter_statuses %}
+          	<LI><div style="font-size:12px;">{{ s.text }}</div><div style="color:#CFA97E;" class="tdate">{{ s.pub_date|timesince }}</div></LI>
+          	{% endfor %}
+        </UL>
+        {% endif %}
+        
         {% load blog_tags %}
         {% get_post_archive as dates %}
         <H2>Архив</H2>
@@ -131,24 +150,6 @@
             {% endfor %}
         </UL>
         <BR>
-		{% if twitter_statuses %}
-        <H2>Твиттер <a style="font-size:10px;" target="_blank" href="http://twitter.com/yun_man_ger"><em>follow</em></a></H2>
-        <UL>
-        	{% if user.is_superuser %}
-        	<div>
-        	<form class="twitter-form" method="post" action="/s/twitter/post/">
-        	{% csrf_token %}
-        	<input type="text" name="tweet" value="сказать" onfocus="if (this.value == &#39;сказать&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;сказать&#39;;}"/>
-        	<input type="hidden" name="next" value="/"/> 
-        	</form>
-        	<br>
-        	</div>
-        	{% endif %}
-        	{% for s in twitter_statuses %}
-          	<LI><div style="font-size:12px;">{{ s.text }}</div><div style="color:#CFA97E;" class="tdate">{{ s.pub_date|timesince }}</div></LI>
-          	{% endfor %}
-        </UL>
-        {% endif %}
         <H2>Имел дело с</H2>
         <UL>
             <LI><A href="http://vaadin.com/">Vaadin RIA Framework</A></LI>

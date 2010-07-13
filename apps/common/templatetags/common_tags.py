@@ -10,3 +10,8 @@ register = template.Library()
 def cdate(date):
     return utils.clever_date(date)
 
+@register.filter
+def div(a,b):
+    if int(a) % int(b) == 0:
+        return True
+    return False

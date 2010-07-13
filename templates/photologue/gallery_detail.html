@@ -1,0 +1,122 @@
+{% extends "photologue/root.html" %}
+{% load common_tags %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block jsblock %}
+{{ block.super }}
+<SCRIPT type="text/javascript" src="{{MEDIA_URL}}static_media/jscss/jquery.tools.min.js"></SCRIPT>
+<style>
+	@import url('/media/static_media/gallery/gallery.css');
+	/* styling for the image wrapper  */
+	#image_wrap {
+		/* dimensions */
+		width:500px;
+		#margin:15px 0 15px 40px;
+		padding:15px 0;
+
+		/* centered */
+		text-align:center;
+
+		/* some "skinning" */
+		background-color:#efefef;
+		border:2px solid #fff;
+		outline:1px solid #ddd;
+		-moz-ouline-radius:4px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<h2>Опубликовано {{ object.date_added|date:"l, F jS, Y" }}</h2>
+{% if object.description %}<p>{{ object.description|linebreaks }}</p>{% endif %}
+<div class="navi"></div> 
+
+<div class="scrollable">   
+   
+   <!-- root element for the items -->
+   <div class="items">
+   	
+   	<div>
+    {% for photo in object.public %}
+         <img src="{{ photo.get_thumbnail_url }}" dis="{{ photo.get_display_url }}" rel="{{ photo.image.url }}"/>
+         {% if forloop.counter|div:4 %}
+    </div>
+    <div>
+         {% endif %}
+    {% endfor %}
+    </div>
+      
+   </div>
+   
+</div>
+<!-- 
+<a class="prev browse left"></a>
+<a class="next browse right"></a>
+ -->
+ 
+<div class="clr" style="clear:both;"></div>
+
+
+<div id="image_wrap">
+	<img src="" width="500" />
+	<a href="">[Оригинал]</a>
+</div>
+<script>
+$(function(){
+	var root = $(".scrollable").scrollable({mousewheel: true, onSeek: function(){
+		$(".items img:eq("+this.getIndex()*4+")").click();
+	}}).navigator();
+	$("div#image_wrap img").click(function() {
+		var next = $(".items").find('img.active').next();
+		if (next.html() == null){
+			root.scrollable().next();
+		}else{
+			next.click();
+		}
+	});
+	$(".items img").click(function() {
+
+	// see if same thumb is being clicked
+	if ($(this).hasClass("active")) { return; }
+
+	// calclulate large image's URL based on the thumbnail URL (flickr specific)
+	var url = $(this).attr("dis");
+	var rel = $(this).attr("rel");
+
+	// get handle to element that wraps the image and make it semi-transparent
+	var wrap = $("#image_wrap").fadeTo("medium", 0.5);
+
+	// the large image from www.flickr.com
+	var img = new Image();
+
+
+	// call this function after it's loaded
+	img.onload = function() {
+
+		// make wrapper fully visible
+		wrap.fadeTo("fast", 1);
+
+		// change the image
+		wrap.find("img").attr("src", url);
+		wrap.find("img").next().attr("href", rel);
+
+	};
+
+	// begin loading the image from www.flickr.com
+	img.src = url;
+
+	// activate item
+	$(".items img").removeClass("active");
+	$(this).addClass("active");
+
+// when page loads simulate a "click" on the first image
+}).filter(":first").click();
+	
+});
+</script>
+ 
+<p><a href="{% url pl-gallery-list 1 %}">Все галлереи.</a></p>
+
+{% endblock %}

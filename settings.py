@@ -99,6 +99,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "common.context_processors.public_links",
 "common.context_processors.markdown_config",
 "common.context_processors.twitter_statuses",
+"work.context_processors.project_list",
+"work.context_processors.recent_projectposts",
 )
 
 MIDDLEWARE_CLASSES = (

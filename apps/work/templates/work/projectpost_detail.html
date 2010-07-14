@@ -1,11 +1,11 @@
-{% extends "blog/base.html" %}
+{% extends "work/base.html" %}
 {% load markup inlines blog_tags %}
 
 {% block content %}
 <DIV class="post" id="post-{{post.pk}}" style="padding-bottom: 40px;">
   <DIV class="posthead">
 
-    <H1><A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
+    <H1><a href="{{ object.project.link }}" title="На страницу проекта {{ object.project }}">{{ object.project}}</a> &rarr; <A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
     <SMALL class="postauthor">Опубликовал {{ object.user }} </SMALL>
 
     <P class="postdate">

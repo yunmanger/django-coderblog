@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 from tagging.fields import TagField
 
+Post = models.get_model('blog','post')
+
 import datetime
 
 TODO_CHOICES = (
@@ -58,6 +60,36 @@ class Todo(models.Model):
     deadline    = models.DateTimeField(null=True, blank=True)
     is_public   = models.BooleanField(default=True)
     objects     = PublicManager()
+    
+    @models.permalink
+    def link(self):
+        return ('project_todo_detail',(),{'slug': self.project.slug, 'id': self.pk})
+    
+    def get_absolute_url(self):
+        return self.link()
 
     def __unicode__(self):
         return self.title
+    
+class PostPublicManager(models.Manager):
+    
+    def published(self):
+        now = datetime.datetime.now()
+        return self.get_query_set().filter(pub_date__lte=now)
+    
+class ProjectPost(Post):
+    project     = models.ForeignKey(Project)
+    objects     = PostPublicManager()
+    
+    def __unicode__(self):
+        return u"%s -> %s" % (self.project.title, self.title)
+    
+    def get_absolute_url(self):
+        return self.link()
+    
+    @models.permalink
+    def link(self):
+        return ('project_post_detail',(),{'slug': self.project.slug, 'id': self.pk})
+    
+    def save(self,*a, **kw):
+        super(ProjectPost, self).save(*a, **kw)    

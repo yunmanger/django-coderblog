@@ -19,9 +19,13 @@
 <SCRIPT type="text/javascript" src="{{MEDIA_URL}}static_media/jscss/jquery.js"></SCRIPT>
 {% block jsblock %}
 {% endblock %}
+
+{% block style %}
 <STYLE type="text/css" media="screen">
 @import url('/media/static_media/styles/soulvision/style.css');
 </STYLE>
+{% endblock %}
+
 <style>
 	form.twitter-form input[type='text']{
 	    border:1px solid #280702;
@@ -49,6 +53,7 @@
             <UL>
               <LI><A href="/">Зеро</A></LI>
               <LI class="page_item page-item-7"><A href="/images/gallery/page/1/" title="Галлереи">Фото</A></LI>
+              <LI class="page_item page-item-7"><A href="/p/" title="Мои проекты">Проекты</A></LI>
               <!-- </LI><LI class="page_item page-item-7"><A href="/about/" title="About">О мелемен</A></LI> -->
             </UL>
           </UL>
@@ -57,11 +62,13 @@
       <DIV id="rssfeeds">
         <P><A href="{% block feed_url %}/feed/{% endblock %}">фид</A></P>
       </DIV>
+      {% block no_search %}
       <DIV class="search">
         <FORM id="searchform" method="get" action="/search/">
           <INPUT type="text" value="ввести и нажать Enter для поиска" name="q" id="q" onfocus="if (this.value == &#39;ввести и нажать Enter для поиска&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;ввести и нажать Enter для поиска&#39;;}">
         </FORM>
       </DIV>
+      {% endblock %}
     </DIV>
   </DIV>
 </DIV>
@@ -78,9 +85,12 @@
 <DIV class="Nav">
           </DIV>
   </DIV>
-
+  {% block no_sidebar %}
   <DIV id="sidebar">
+  {% block sidebar %}
+  {% block no_sidebar_top %}
   <DIV id="sidebar-top">
+  {% block sidebar_top %}
     <UL id="top-sidebarwidgets">
             <H2>Про этот блог</H2>
       <DIV class="sidebar-top-box">
@@ -92,10 +102,13 @@
         </DIV>
       </DIV>
           </UL>
+  {% endblock %}
   </DIV>
+  {% endblock %}
   <DIV style="clear:both;"></DIV>
-
+   {% block no_sidebar_left %}
   <DIV id="sidebar-left">
+   {% block sidebar_left %}
     <UL id="l_sidebarwidgets">
         <DIV class="Categ">
         <H2>Недавние посты</H2>
@@ -103,13 +116,6 @@
         	{% for post in recent_posts %}
         	<LI><A href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</A></LI>
         	{% endfor %}
-        </UL>
-        <BR>
-        <H2>Разделы</H2>
-        <UL>
-        {% for cat in category_list %}
-          	<LI class="cat-item cat-item-{{cat.pk}}"><A href="{{ cat.link }}" title="View all posts filed under {{ cat.title }}">{{ cat.title }}</A></LI>
-		{% endfor %}
         </UL>
         <BR>
 		{% if twitter_statuses %}
@@ -130,7 +136,31 @@
           	{% endfor %}
         </UL>
         {% endif %}
-        
+        {% if recent_projectposts %}
+        <H2>Последнее в проектах</H2>
+        <UL>
+        	{% for post in recent_projectposts %}
+        	<LI><A href="{{ post.link }}" title="{{ post.title }}">{{ post.project }} &rarr; {{ post.title }}</A></LI>
+        	{% endfor %}
+        </UL>
+        <BR>
+        {% endif %}        
+      </DIV>
+    </UL>
+    {% endblock %}
+  </DIV>
+    {% endblock %}
+    {% block no_sidebar_right %}
+  <DIV id="sidebar-right">
+    {% block sidebar_right %}
+    <UL id="r_sidebarwidgets">
+        <H2>Разделы</H2>
+        <UL>
+        {% for cat in category_list %}
+          	<LI class="cat-item cat-item-{{cat.pk}}"><A href="{{ cat.link }}" title="View all posts filed under {{ cat.title }}">{{ cat.title }}</A></LI>
+		{% endfor %}
+        </UL>
+        <BR>
         {% load blog_tags %}
         {% get_post_archive as dates %}
         <H2>Архив</H2>
@@ -139,11 +169,12 @@
           	<LI><A href="{% url blog_archive_month year=date.year month=date|date:"m" %}" title="{{ date|date:"b Y" }}">{{ date|date:"b Y" }}</A></LI>
           	{% endfor %}
         </UL>
-      </DIV>
-    </UL>
-  </DIV>
-  <DIV id="sidebar-right">
-    <UL id="r_sidebarwidgets">
+        <H2>Проекты</H2>
+        <UL>
+        	{% for object in project_list %}
+          	<LI><A href="{{ object.link }}" title="на страницу проекта {{ object }}">{{ object }}</A></LI>
+          	{% endfor %}
+        </UL>        
         <H2>Ссылки</H2>
         <UL>
         	{% for link in public_links %}
@@ -169,9 +200,12 @@
         </UL>
         <BR>
  </UL>
+     {% endblock %}
   </DIV>
+    {% endblock %}
 </DIV>
-
+{% endblock %}
+{% endblock %}
 </DIV>
 <!-- begin footer -->
 

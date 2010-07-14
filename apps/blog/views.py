@@ -58,9 +58,9 @@ def post_on_yvi(request, slug, year, month, day, **kwargs):
         post.post_on_yvi()
         success = True
     except:
-        traceback.print_exc()
+        s = traceback.format_exc()
         success = False 
-    c = RequestContext(request, {'post' : post, 'success' : success})
+    c = RequestContext(request, {'post' : post, 'success' : success, 'msg': s})
     return render_to_response("blog/post_on_yvi_success.html", c)
     
 def post_detail(request, slug, year, month, day, **kwargs):

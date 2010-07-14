@@ -1,1 +1,13 @@
 {% extends "base_wide.html" %}
+
+{% block sidebar_right %}
+    <UL id="r_sidebarwidgets">
+        <H2>Проекты</H2>
+        <UL>
+        	{% for object in project_list %}
+            <LI><A href="{{ object.link }}">{{ object }}</A></LI>
+            {% endfor %}
+        </UL>
+        <BR>
+ </UL>
+{% endblock %}

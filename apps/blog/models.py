@@ -4,6 +4,12 @@ from django.conf import settings
 import datetime
 
 from blog.utils import post_to_yvi
+from tagging.fields import TagField
+
+POST_VISIBILITY = (
+     (1, "everywhere"),
+     (2, "projects"),
+)
 
 class Category(models.Model):
     title       = models.CharField(max_length=25)
@@ -23,7 +29,7 @@ class PublicManager(models.Manager):
     
     def published(self):
         now = datetime.datetime.now()
-        return self.get_query_set().filter(pub_date__lte=now)
+        return self.get_query_set().filter(pub_date__lte=now, visibility=1)
 
 class Post(models.Model):
     user        = models.ForeignKey(User)
@@ -34,6 +40,8 @@ class Post(models.Model):
     markup      = models.CharField(editable=False, default='mrk', max_length=3)
     pub_date    = models.DateTimeField()
     mod_date    = models.DateTimeField()
+    visibility  = models.IntegerField(choices=POST_VISIBILITY, default=1)
+    tags        = TagField(default='')
     objects     = PublicManager()
     
     class Meta:

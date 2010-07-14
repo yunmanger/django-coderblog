@@ -5,6 +5,7 @@
 <h1>Кроспост на <img width="64" src="/media/static_media/yvision_logo.jpg"/> завершился удачно!</h1>
 {% else %}
 <h1>Кроспост на <img width="64" src="/media/static_media/yvision_logo.jpg"/> завершился неудачно :'(</h1>
+{{ msg|linebreaks }}
 {% endif %}
 <br>
 <a href="{{ post.link }}" class="older">&larr; Назад</a>

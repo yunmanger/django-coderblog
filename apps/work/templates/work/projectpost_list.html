@@ -1,0 +1,10 @@
+{% extends "work/base.html" %}
+
+{% block content %}
+  <h1>Проект: <a href="{{ object.link }}" title="На страницу проекта {{object}}">{{ object }}</a></h1>
+	{% for object in object_list %}
+	{% include "work/post-item.html" %}
+	{% endfor %}
+	
+	{% include "blog/pagination.html"%}
+{% endblock %}

@@ -1,7 +1,9 @@
 {% extends "work/base.html" %}
-{% load common_tags %}
+{% load common_tags inlines %}
 
 {% block content %}
+<h1>{{ object }}</h1>
+{{ object.desc_ref|render_inlines }}
 <h2>TODOs</h2>
 <hr>
 {% if not todo_list %}
@@ -9,12 +11,12 @@
 {% else %}
 {% for todo in todo_list %}
 <div>
-<a href="{{ todo.link }}">{{ todo }}</a> - {{ todo.get_status_display }} - {{ todo.get_type_display }} - date: {{todo.pub_date|cdate}}
+<a href="{{ todo.link }}">{{ todo }}</a> - {{ todo.get_status_display }} - {{ todo.get_type_display }} - опубликовано {{ todo.pub_date|timesince }} назад
 </div>
 {% endfor %}
 {% endif %}
 <hr>
-<a href="">Посмотреть все туду</a>
+<a href="{% url project_todos slug=object.slug %}">Посмотреть все туду</a>
 
 <h2>POSTs</h2>
 <hr>
@@ -23,12 +25,12 @@
 {% else %}
 {% for post in post_list %}
 <div>
-{{ post }}
+<a href="{{ post.link }}">{{ post.title }}</a>  - опубликовано {{ post.pub_date|timesince }} назад
 </div>
 {% endfor %}
 {% endif %}
 <hr>
-<a href="">Посмотреть все посты по проекту</a>
+<a href="{% url project_posts slug=object.slug %}">Посмотреть все посты по проекту</a>
 
 <h2>FILEs</h2>
 <hr>

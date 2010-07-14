@@ -1,13 +1,11 @@
 {% extends "work/base.html" %}
-{% load inlines markup %}
-{% block content %}
-<h1>Проект: <a href="{{ object.link }}" title="На страницу проекта {{object}}">{{ object }}</a></h1>
+{% load markup inlines blog_tags %}
 
-	{% for object in object_list %}
+{% block content %}
 <DIV class="post" id="post-{{object.pk}}" style="padding-bottom: 40px;">
   <DIV class="posthead">
 
-    <H1><A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
+    <H1><a href="{{ object.project.link }}" title="На страницу проекта {{ object.project }}">{{ object.project}}</a> &rarr; <A title="Permanent Link to {{ object.title }}" href="{{ object.link }}" rel="bookmark">{{ object.title }}</A></H1>
     <SMALL class="postauthor">Опубликовал {{ object.user }} </SMALL>
 
     <P class="postdate">
@@ -31,7 +29,4 @@
   </DIV>
 </DIV>
 <DIV class="clearer"></DIV>
-	{% endfor %}
-	
-	{% include "blog/pagination.html"%}
 {% endblock %}

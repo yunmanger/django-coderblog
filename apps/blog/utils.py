@@ -2,7 +2,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from BeautifulSoup import BeautifulSoup, Comment
 
-from blog.django_yvi import post as do_post
+from common.django_yvi import post as do_post
 
 def check(name, value):
     if (name.upper() in ['HREF', 'SRC']) and not value.upper().startswith('HTTP'):

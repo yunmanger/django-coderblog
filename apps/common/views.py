@@ -1,13 +1,39 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.sitemaps import ping_google
 from common.utils import download_twitter_statuses, post_to_twitter
+from common.django_yvi import ping_url as do_ping_url
 
 import traceback
 
+from django import forms
 
+class PingForm(forms.Form):
+    url         = forms.URLField()
+    num         = forms.IntegerField()
+
+@login_required
+def ping_url(request, template_name="common/ping_url.html"):
+    if request.user.is_superuser:
+        if request.method == "POST":
+            try:
+                do_ping_url(request.POST['url'], int(request.POST.get('num',1)))
+                msg = "Ping is OK"
+            except:
+                msg = traceback.format_exc()
+        else:
+            f = PingForm()
+            c = RequestContext(request, {'form' : f})
+            return render_to_response(template_name, c)
+    else:
+        msg = "You have no permission."
+    c = RequestContext(request, {'message' : msg})
+    return render_to_response("common/message.html",c)
+    
+@login_required
 def ping(request):
     if request.user.is_superuser:
         try:
@@ -20,6 +46,7 @@ def ping(request):
     c = RequestContext(request, {'message' : msg})
     return render_to_response("common/message.html",c)
 
+@login_required
 def dtw(request):
     if request.user.is_superuser:
         try:
@@ -33,6 +60,7 @@ def dtw(request):
     c = RequestContext(request, {'message' : msg})
     return render_to_response("common/message.html",c)
 
+@login_required
 def ptw(request):
     next = request.POST.get('next',None)
     next = request.GET.get('next',next)

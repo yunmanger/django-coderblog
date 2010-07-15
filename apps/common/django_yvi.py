@@ -25,7 +25,6 @@ def post(title, text, tags, YVI_LOGIN, YVI_PASSWORD, YVI_USER_ID=None):
     form = forms[2]
 
     form.action = 'http://%s.yvision.kz/ajax/post/article.php?publicate=1' % YVI_LOGIN
-    print text
     form['blog_title'] = title
     form['blog_post'] = text
     form['blog_tags'] = tags
@@ -36,4 +35,8 @@ def post(title, text, tags, YVI_LOGIN, YVI_PASSWORD, YVI_USER_ID=None):
 
     request = form.click()
     response = ClientCookie.urlopen(request)
-
+    
+def ping_url(url, n=1):
+    request = ClientCookie.Request(url)
+    for i in xrange(0,n):
+        response = ClientCookie.urlopen(request)

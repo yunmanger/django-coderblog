@@ -11,7 +11,7 @@
 {% else %}
 {% for todo in todo_list %}
 <div>
-<a href="{{ todo.link }}">{{ todo }}</a> - {{ todo.get_status_display }} - {{ todo.get_type_display }} - опубликовано {{ todo.pub_date|timesince }} назад
+<a href="{{ todo.link }}" title="Детали">{{ todo }}</a> - {{ todo.get_status_display }} - {{ todo.get_type_display }} - опубликовано {{ todo.pub_date|timesince }} назад
 </div>
 {% endfor %}
 {% endif %}
@@ -25,7 +25,7 @@
 {% else %}
 {% for post in post_list %}
 <div>
-<a href="{{ post.link }}">{{ post.title }}</a>  - опубликовано {{ post.pub_date|timesince }} назад
+<a href="{{ post.link }}" title="Читать">{{ post.title }}</a>  - опубликовано {{ post.pub_date|timesince }} назад
 </div>
 {% endfor %}
 {% endif %}

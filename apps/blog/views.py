@@ -54,6 +54,7 @@ def post_archive(request, year, month=None, day=None, **kwargs):
 
 def post_on_yvi(request, slug, year, month, day, **kwargs):
     post = Post.objects.get(slug=slug, pub_date__year=year, pub_date__month=int(month), pub_date__day=day)
+    s = ''
     try:    
         post.post_on_yvi()
         success = True

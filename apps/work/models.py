@@ -71,15 +71,16 @@ class Todo(models.Model):
     def __unicode__(self):
         return self.title
     
-#class PostPublicManager(models.Manager):
-#    
-#    def published(self):
-#        now = datetime.datetime.now()
-#        return self.get_query_set().filter(pub_date__lte=now)
+class PostPublicManager(models.Manager):
+    
+    def published(self):
+        now = datetime.datetime.now()
+        return self.get_query_set() 
+        #.filter(pub_date__lte=now)
     
 class ProjectPost(Post):
     project     = models.ForeignKey(Project)
-#    objects     = PostPublicManager()
+    objects     = PostPublicManager()
     
     def __unicode__(self):
         return u"%s -> %s" % (self.project.title, self.title)

@@ -16,7 +16,7 @@
 {% else %}
 {% for todo in todo_list %}
 <div>
-<a href="{{ todo.link }}" title="Детали">{{ todo }}</a> 
+<a href="{{ todo.link }}" title="Детали"><font size="3">{{ todo }}</font></a> 
     {% get_comment_count for todo as count %}
     {{ count }} комент.
 
@@ -34,7 +34,7 @@
 {% else %}
 {% for post in post_list %}
 <div>
-<a href="{{ post.link }}" title="Читать">{{ post.title }}</a>
+<a href="{{ post.link }}" title="Читать"><font size="3">{{ post.title }}</font></a>
     {% get_comment_count for post as count %}
     {{ count }} комент.
   - опубликовано {{ post.pub_date|timesince }} назад
@@ -51,7 +51,7 @@
 {% else %}
 {% for file in file_list %}
 <div>
-{{ file }}
+<font size="3">{{ file }}</font>
 </div>
 {% endfor %}
 {% endif %}

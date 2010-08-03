@@ -1,5 +1,19 @@
 {% extends "base_wide.html" %}
 
+{% block jsblock %}
+{{ block.super }}
+<style>
+font.todo1{background-color:red;}
+font.todo2{background-color:brown;}
+font.todo3{background-color:yellow;}
+font.todo4{background-color:#eee;}
+font.status1{background-color:red;}
+font.status2{background-color:yellow;}
+font.status3{background-color:green;}
+font.status4{background-color:#eee;}
+</style>
+{% endblock %}
+
 {% block sidebar_right %}
     <UL id="r_sidebarwidgets">
         <H2>Проекты</H2>

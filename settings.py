@@ -132,6 +132,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.sitemaps',
 
+    'django.contrib.comments',
+    'threadedcomments',
     'django-backup',
     'tagging',
     'south',
@@ -139,6 +141,7 @@ INSTALLED_APPS = (
     'photologue',
     'haystack',
     'robots',
+    'uni_form',
 
     'blog',
     'files',
@@ -159,3 +162,5 @@ sys.path.append(rel('apps'))
 HAYSTACK_SITECONF = 'code_project.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = rel_to(MEDIA_ROOT,"whoosh","codeproject")
+
+COMMENTS_APP = 'threadedcomments'

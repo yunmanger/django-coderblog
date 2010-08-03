@@ -1,5 +1,10 @@
 {% extends "work/base.html" %}
-{% load markup inlines blog_tags %}
+{% load markup inlines blog_tags comments %}
+
+{% block jsblock %}
+{{ block.super }}
+{% include "threadedcomments/js-stuff.html" %}
+{% endblock %}
 
 {% block content %}
 <DIV class="post" id="post-{{post.pk}}" style="padding-bottom: 40px;">
@@ -24,10 +29,13 @@
   {% endif %}
   
   <DIV class="postinfo" width=100%>
-    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} Comments</A></LI>
+  {% get_comment_count for object as count %}
+    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} комент.</A></LI>
     <LI class="postcat">Filed under: <A href="{{ object.category.link }}" title="View all posts in {{ object.category }}" rel="category tag">{{ object.category }}</A></LI>
     <DIV class="clearer"></DIV>
   </DIV>
 </DIV>
 <DIV class="clearer"></DIV>
+
+{% include "threadedcomments/html-stuff.html" %}
 {% endblock %}

@@ -1,0 +1,28 @@
+<script>
+function doToggle(id){
+	var container = $('div#comments').find('div#reply-'+id);	
+	if (container.html()==''){
+		var form = $('div#form_withparent').find('form');
+		var clone = form.clone();
+		var l = clone.find('input[name=next]').val();
+		clone.find('input[name=next]').val(l+'#c'+id)
+		clone.find('input[name=parent]').val(id);
+		container.append(clone);
+	}
+	if (container.is(':visible')){container.hide();}
+	else{
+	container.show();
+	}	
+}
+</script>
+<style>
+form label {display: block;}
+div#comments li {list-style:none;}
+div.comment {
+	padding:3px 0 3px 10px; 
+	display:block; 
+	background-image:url('/media/static_media/styles/soulvision/images/blockquote-bg.jpg');
+	background-repeat: repeat-y;
+}
+div.hidden {display:none;}
+</style>

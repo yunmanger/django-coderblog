@@ -1,3 +1,4 @@
+{% load comments %}
 <DIV class="post" id="post-{{object.pk}}" style="padding-bottom: 40px;">
   <DIV class="posthead">
 
@@ -14,7 +15,8 @@
   {% include "blog/post-render.html" %}
   </DIV>
   <DIV class="postinfo">
-    <!-- <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} Comments</A></LI> -->
+    {% get_comment_count for object as count %}
+    <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }} комент.</A></LI>
     <LI class="postcat">в разделе:
       <A href="{{ object.category.link }}" title="View all posts in {{ object.category }}" rel="category tag">{{ object.category }}</A></LI>
     <DIV class="clearer"></DIV>

@@ -1,0 +1,56 @@
+{% load threadedcomments_tags uni_form %}
+<DIV id="comments">
+<h2>Комментарии</h2>
+{% get_comment_list for object as comment_list %}
+{% if not comment_list %}
+Комментариев пока нет!
+{% endif %}
+{% for comment in comment_list|fill_tree|annotate_tree %}
+
+{% ifchanged comment.parent_id %}{% else %}
+    </li>
+{% endifchanged %}
+
+{% if not comment.open and not comment.close %}
+    </li>
+{% endif %}
+    
+{% if comment.open %}
+    <ul>
+{% endif %}
+
+<li{% if comment.last %} class="last"{% endif %}>
+<div id="c{{comment.pk}}" class="comment">
+<small>Автор: {{ comment.name }} </small><br>
+<div>
+<img style="float:left;" src="{{MEDIA_URL}}static_media/styles/soulvision/images/icon-comment.gif" />{{ comment.comment|linebreaks }}{% if comment.added_path %} ADDED {% endif %}
+</div>
+<small><i>опубликовано {{ comment.submit_date|timesince }} назад</i></small><br>
+<a href="#" onClick="javascript:{doToggle({{comment.pk}});return false;}">Ответить</a><br>
+<div id="reply-{{comment.pk}}" class="hidden"></div>
+</div>
+
+{% for close in comment.close %}
+    </li>
+    </ul>
+{% endfor %}
+
+{% endfor %}
+<h2>Оставь комментарий</h2>
+<form method="post" action="/comments/post/">
+{% csrf_token %}
+{% get_comment_form for object as form %}
+{{ form|as_uni_form }}
+<input type="hidden" name="next" value="{{ object.link }}#comments" />
+<input type="submit" name="post" value="Запостить!" />
+</form>
+<div id="form_withparent" class="hidden">
+<form method="post" action="/comments/post/">
+{% csrf_token %}
+{% get_comment_form for object as form with 1 %}
+{{ form|as_uni_form }}
+<input type="hidden" name="next" value="{{ object.link }}" />
+<input type="submit" name="post" value="Ответить!" />
+</form>
+</div>
+</DIV>

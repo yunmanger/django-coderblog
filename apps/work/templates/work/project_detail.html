@@ -1,5 +1,10 @@
 {% extends "work/base.html" %}
-{% load common_tags inlines %}
+{% load common_tags inlines comments %}
+
+{% block jsblock %}
+{{ block.super }}
+{% include "threadedcomments/js-stuff.html" %}
+{% endblock %}
 
 {% block content %}
 <h1>{{ object }}</h1>
@@ -11,7 +16,11 @@
 {% else %}
 {% for todo in todo_list %}
 <div>
-<a href="{{ todo.link }}" title="Детали">{{ todo }}</a> - {{ todo.get_status_display }} - {{ todo.get_type_display }} - опубликовано {{ todo.pub_date|timesince }} назад
+<a href="{{ todo.link }}" title="Детали">{{ todo }}</a> 
+    {% get_comment_count for todo as count %}
+    {{ count }} комент.
+
+- <font class="status{{ todo.status }}">{{ todo.get_status_display }}</font> - <font class="todo{{todo.type}}">{{ todo.get_type_display }}</font> <!-- - опубликовано {{ todo.pub_date|timesince }} назад -->
 </div>
 {% endfor %}
 {% endif %}
@@ -25,7 +34,10 @@
 {% else %}
 {% for post in post_list %}
 <div>
-<a href="{{ post.link }}" title="Читать">{{ post.title }}</a>  - опубликовано {{ post.pub_date|timesince }} назад
+<a href="{{ post.link }}" title="Читать">{{ post.title }}</a>
+    {% get_comment_count for post as count %}
+    {{ count }} комент.
+  - опубликовано {{ post.pub_date|timesince }} назад
 </div>
 {% endfor %}
 {% endif %}
@@ -45,4 +57,6 @@
 {% endif %}
 <hr>
 <a href="">Посмотреть все посты по проекту</a>
+
+{% include "threadedcomments/html-stuff.html" %}
 {% endblock %}

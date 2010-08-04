@@ -22,6 +22,9 @@
   <DIV class="postcontent">
   {{ object.desc|render_inlines|markdown:mrk_conf }}
   </DIV>
+  <div style="padding:20px;">
+  <a href="{{ object.edit_link }}">Редактировать</a>
+  </div>
   <DIV class="postinfo">
     {% get_comment_count for object as count %}
     <LI class="postcomments"><A href="{{ object.link }}#comments" title="Comment on {{ object }}">{{ count }}</A></LI>

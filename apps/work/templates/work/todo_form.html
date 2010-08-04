@@ -1,0 +1,29 @@
+{% extends "work/base.html" %}
+
+{% load uni_form %}
+
+{% block jsblock %}
+{{ block.super }}
+<SCRIPT type="text/javascript" src="{{MEDIA_URL}}static_media/jscss/jquery.tools.min.js"></SCRIPT>
+<link rel="stylesheet" href="{{MEDIA_URL}}static_media/jscss/dateinput.css" type="text/css" />
+<style>
+input[type=text], input[type=password], textarea, select {
+	border:1px solid #ccc;
+	font-size:18px;
+	padding:4px;
+	-moz-box-shadow:0 0 10px #eee inset;
+}
+form label {display:block;}
+</style>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+{% csrf_token %}
+{{ form|as_uni_form }}
+<input type="submit" value="сохранить">
+</form>
+<script>
+$('.dateinput').dateinput({format:'yyyy-mm-dd'});
+</script>
+{% endblock %}

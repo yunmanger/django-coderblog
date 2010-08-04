@@ -25,7 +25,7 @@
 {% endfor %}
 {% endif %}
 <hr>
-<a href="{% url project_todos slug=object.slug %}">Посмотреть все туду</a>
+<a href="{% url project_todos slug=object.slug %}">Посмотреть все туду</a> {% if user.is_superuser %}| <a href="{% url project_todo_new slug=object.slug %}">Создать туду</a>{% endif %}
 
 <h2>POSTs</h2>
 <hr>

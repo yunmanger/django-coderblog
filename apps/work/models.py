@@ -57,13 +57,20 @@ class Todo(models.Model):
     type        = models.IntegerField(choices=TODO_CHOICES)
     status      = models.IntegerField(choices=TODO_STATUS, default=1)
     pub_date    = models.DateTimeField()
-    deadline    = models.DateTimeField(null=True, blank=True)
+    deadline    = models.DateField(null=True,blank=True)
     is_public   = models.BooleanField(default=True)
     objects     = PublicManager()
+    
+    class Meta:
+        ordering = ('status','-pub_date','type')
     
     @models.permalink
     def link(self):
         return ('project_todo_detail',(),{'slug': self.project.slug, 'id': self.pk})
+
+    @models.permalink
+    def edit_link(self):
+        return ('project_todo_edit',(),{'slug': self.project.slug, 'id': self.pk})
     
     def get_absolute_url(self):
         return self.link()

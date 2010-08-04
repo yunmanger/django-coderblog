@@ -3,9 +3,11 @@ from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.conf import settings
 from django.views.generic import date_based, list_detail
+from django.contrib.auth.decorators import login_required
 
 
 from work.models import Project, Todo, ProjectPost
+from work.forms import TodoForm
 
 def project_list(request, page=0, paginate_by=20, **kwargs):
     page_size = getattr(settings,'WORK_PAGESIZE', paginate_by)
@@ -78,3 +80,27 @@ def todo_list(request, slug, page=1, **kw):
         extra_context = {'object' : project },
         **kw
     )
+    
+@login_required
+def todo_form(request, slug, id=None, template_name="work/todo_form.html"):
+    is_admin = request.user.is_authenticated() and request.user.is_superuser
+    if not is_admin: raise Http404
+    project = get_object_or_404(Project, slug__iexact=slug)
+    todo = None
+    if id is not None:
+        try:
+            if is_admin:
+                todo = project.todo_set.all().get(pk=id)
+            else:
+                todo = project.todo_set.published().get(pk.id)
+        except Todo.DoesNotExist:
+            raise Http404
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save(user=request.user, project=project)
+            return HttpResponseRedirect(project.link())
+    else:
+        form = TodoForm(instance=todo)
+    c = RequestContext(request, {'form' : form})
+    return render_to_response(template_name, c)

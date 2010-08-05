@@ -63,6 +63,9 @@ YVI_USER_ID = None
 TWITTER_USER = ""
 TWITTER_PASSWORD = ""
 
+#blog
+BLOG_PAGESIZE = 5
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = '/home/german/work/media/code_project/'

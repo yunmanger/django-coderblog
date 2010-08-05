@@ -1,15 +1,11 @@
   {% if is_paginated %}
   <p class="pagination">
-    {% if has_next %}
-    <a class="older" href="?page={{ next }}" title="Старее">туда &rarr;</a>
-    {% endif %}
-    {% if has_next and has_previous %} | {% endif %}
-        <span class="current">
-            Стр. {{ cur }} из {{ total }}.
-        </span>
-    {% if has_next and has_previous %} | {% endif %}
     {% if has_previous %}
     <a class="newer" href="?page={{ previous }}" title="Новее">&larr; сюда</a>
+    {% endif %}
+    {% if has_next and has_previous %} | {% endif %}
+    {% if has_next %}
+    <a class="older" href="?page={{ next }}" title="Старее">туда &rarr;</a>
     {% endif %}
   </p>
   {% endif %}	

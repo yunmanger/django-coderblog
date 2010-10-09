@@ -15,7 +15,7 @@ fi
 sudo $nginx_bin/nginx -c $nginx_conf
 ;;
 "stop")
-if [ $1 = "workday" ]
+if [ $1 != "workday" ]
 then
 ps aux | grep "$uwsgi_cmd" | grep -v grep | awk '{system("kill -9 " $2)}'
 fi

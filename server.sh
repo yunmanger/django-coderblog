@@ -6,6 +6,7 @@ pwd=$( readlink -f "$( dirname "$BASH_SOURCE" )" )
 echo $PYTHONPATH
 
 uwsgi_cmd="$uwsgi_bin/uwsgi -s $socket --env PYTHONPATH=$PYTHONPATH -p 4 -M -t 20 -r -C -L -d ../wsgi_codeproject.log -w wsgi"
+nginx_vhosts=/opt/nginx/vhosts
 
 case $2 in
 "start")

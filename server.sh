@@ -3,6 +3,7 @@
 pwd=$( readlink -f "$( dirname "$BASH_SOURCE" )" )
 #. $pwd/env.sh
 #. $pwd/deploy/server.cfg.local
+PYTHONPATH=$PYTHONPATH:$pwd/apps:$pwd/libs:/opt/envs/code_project/lib/python2.5/site-packages
 echo $PYTHONPATH
 
 nginx=/opt/nginx

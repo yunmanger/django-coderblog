@@ -27,5 +27,11 @@ bash $0 $1 stop
 sleep 1
 bash $0 $1 start
 ;;
+"deploy")
+cp $nginx_vhosts/buben.kz.conf $pwd/deploy/$1/nginx.conf
+;;
+"undeploy")
+rm $nginx_vhosts/buben.kz.conf
+;;
 *) echo "Usage: ./server.sh <config> {start|stop|restart}"
 esac

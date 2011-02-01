@@ -29,7 +29,7 @@ sleep 1
 bash $0 $1 start
 ;;
 "deploy")
-cp $nginx_vhosts/buben.kz.conf $pwd/deploy/$1/nginx.conf
+cp $pwd/deploy/$1/nginx.conf $nginx_vhosts/buben.kz.conf
 ;;
 "undeploy")
 rm $nginx_vhosts/buben.kz.conf

@@ -1,0 +1,13 @@
+Django==1.2
+django-tagging
+south
+#django-basic-apps
+django-threadedcomments
+#django-backup
+django-photologue
+django-haystack
+django-robots
+django-uni-form<0.7
+markdown
+whoosh
+PIL

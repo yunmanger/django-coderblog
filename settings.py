@@ -1,11 +1,14 @@
 # Django settings for code_project project.
-import sys, os
+import sys
+import os
 
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
 def rel_to(to, *x):
     return os.path.join(to, *x)
+
+sys.path.insert(0, rel("libs"))
 
 DISTR_DIR='/home/german/distr'
 LIB_DIR='/home/german/work/libs'
@@ -137,7 +140,7 @@ INSTALLED_APPS = (
 
     'django.contrib.comments',
     'threadedcomments',
-    'django-backup',
+    #'django-backup',
     'tagging',
     'south',
     'basic.inlines',

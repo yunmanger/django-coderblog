@@ -1,4 +1,5 @@
-import sys,os
+import sys
+import os
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'code_project.settings'
   

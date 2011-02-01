@@ -7,6 +7,7 @@ PYTHONPATH=$PYTHONPATH:$pwd/apps:$pwd/libs:/opt/envs/code_project/lib/python2.5/
 echo $PYTHONPATH
 
 nginx=/opt/nginx
+uwsgi_bin=$nginx/sbin
 socket=$nginx/sock/code_project.$1.sock
 nginx_vhosts=$nginx/vhosts
 log_dir=$nginx/logs
